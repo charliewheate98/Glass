@@ -36,7 +36,7 @@ EditorApplication::EditorApplication(const char* title)
 	ImGui::CreateContext();
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
-	ImGui_ImplOpenGL3_Init("#version 440 core");
+	ImGui_ImplOpenGL3_Init(GLSL_VERSION);
 }
 
 EditorApplication::~EditorApplication()

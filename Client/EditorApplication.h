@@ -11,6 +11,7 @@
 
 #define GET_WINDOW_WIDTH 1920
 #define GET_WINDOW_HEIGHT 1080
+#define GLSL_VERSION "#version 440 core"
 
 class EditorApplication : public Glass::Application
 {
@@ -20,8 +21,8 @@ public:
 	EditorApplication(const char* title);
 	~EditorApplication();
 
-	void MainLoop() override;
+	void MainLoop()			   override;
 	void Tick(float DeltaTime) override;
-	void Render() override;
+	void Render()			   override;
 };
 

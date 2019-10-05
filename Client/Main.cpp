@@ -4,9 +4,13 @@
 
 int main(int argc, char** argv)
 {
-	EditorApplication* editor_app = new EditorApplication("Glass Editor");
+	// Allocate the editor app on the STACK 
+	// [faster then allocating on HELP]
+	EditorApplication editor_app("Glass Editor");
 
-	editor_app->MainLoop();
+	// Begin the main loop for the editor app
+	editor_app.MainLoop();
 
+	// Return success
 	return EXIT_SUCCESS;
 }
