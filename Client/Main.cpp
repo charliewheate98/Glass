@@ -1,9 +1,12 @@
-#include <iostream>
+#include "EditorApplication.h"
 
-#include "Glass/Glass.h"
+#pragma warning(disable:4251)
 
 int main(int argc, char** argv)
 {
-	system("pause");
-	return 0;
+	EditorApplication* editor_app = new EditorApplication("Glass Editor");
+
+	editor_app->MainLoop();
+
+	return EXIT_SUCCESS;
 }

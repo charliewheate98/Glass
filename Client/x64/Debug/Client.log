@@ -1,2 +1,4 @@
 ﻿  Main.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Dev\Glass\vendor\glfw\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
   Client.vcxproj -> C:\Dev\Glass\x64\Debug\Client.exe
