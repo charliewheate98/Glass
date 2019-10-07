@@ -3,11 +3,14 @@
 #include "pch.h"
 #include "Core.h"
 
+#include <GLFW/glfw3.h>
+
 namespace Glass
 {
 	class GLASS_API Application
 	{
-	private:
+	protected:
+		GLFWwindow* window;
 	public:
 		Application();
 		virtual ~Application();

@@ -46,6 +46,7 @@ EditorApplication::~EditorApplication()
 }
 
 void EditorApplication::Tick(float DeltaTime) {}
+
 void EditorApplication::Render()
 {
 	{

@@ -72,14 +72,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)bin\</OutDir>
     <IntDir>$(SolutionDir)bin-int\</IntDir>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
-    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Dev\Glass\vendor\glfw\lib-vc2019;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Dev\Glass\vendor\glfw\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)bin\</OutDir>
     <IntDir>$(SolutionDir)bin-int\</IntDir>
-    <LibraryPath>$(LibraryPath)</LibraryPath>
-    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Dev\Glass\vendor\glfw\lib-vc2019;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Dev\Glass\vendor\glfw\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -103,7 +103,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -136,10 +136,14 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Glass\Camera.h" />
+    <ClInclude Include="src\Glass\Renderer.h" />
+    <ClInclude Include="src\Glass\Layer.h" />
+    <ClInclude Include="src\Glass\Input.h" />
     <ClInclude Include="src\Glass\Application.h" />
     <ClInclude Include="src\Glass\EntryPoint.h" />
     <ClInclude Include="src\Glass\Glass.h" />
@@ -148,6 +152,10 @@
     <ClInclude Include="src\Glass\pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Glass\Camera.cpp" />
+    <ClCompile Include="src\Glass\Renderer.cpp" />
+    <ClCompile Include="src\Glass\Layer.cpp" />
+    <ClCompile Include="src\Glass\Input.cpp" />
     <ClCompile Include="src\Glass\Application.cpp" />
     <ClCompile Include="src\Glass\Logger.cpp" />
   </ItemGroup>

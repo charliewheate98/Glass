@@ -16,13 +16,12 @@
 class EditorApplication : public Glass::Application
 {
 private:
-	GLFWwindow* window;
 public:
 	EditorApplication(const char* title);
 	~EditorApplication();
 
-	void MainLoop()			   override;
-	void Tick(float DeltaTime) override;
-	void Render()			   override;
+	virtual void MainLoop()			   override;
+	virtual void Tick(float DeltaTime) override;
+	virtual void Render()			   override;
 };
 
