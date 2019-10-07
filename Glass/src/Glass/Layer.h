@@ -25,8 +25,6 @@ namespace Glass
 
 		uint32_t& GetZIndex() { return ZIndex; }
 	};
-
-
 }
 
 
