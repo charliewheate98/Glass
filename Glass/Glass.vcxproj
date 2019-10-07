@@ -140,6 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Glass\Maths.h" />
     <ClInclude Include="src\Glass\Camera.h" />
     <ClInclude Include="src\Glass\Renderer.h" />
     <ClInclude Include="src\Glass\Layer.h" />
