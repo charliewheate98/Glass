@@ -7,6 +7,7 @@
 #include "ImGui/imgui_impl_glfw.h"
 #include "ImGui/imgui_impl_opengl3.h"
 
+#include "Glass/Shader.h"
 #include "Glass/Glass.h"
 
 #define GET_WINDOW_WIDTH 1920
@@ -15,7 +16,8 @@
 
 class EditorApplication : public Glass::Application
 {
-private:
+private:	
+	std::vector<std::shared_ptr<Glass::Shader>> shaders;
 public:
 	EditorApplication(const char* title);
 	~EditorApplication();

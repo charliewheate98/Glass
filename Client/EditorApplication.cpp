@@ -33,6 +33,8 @@ EditorApplication::EditorApplication(const char* title)
 	glViewport(0, 0, GET_WINDOW_WIDTH, GET_WINDOW_HEIGHT);
 	glClearColor(0.f, 0.f, 0.f, 1.f);
 
+	shaders.push_back(std::make_shared<Glass::Shader>("Content/Shaders/basic.vs", "Content/Shaders/basic.fs"));
+
 	ImGui::CreateContext();
 	ImGui::StyleColorsDark();
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
@@ -41,14 +43,20 @@ EditorApplication::EditorApplication(const char* title)
 
 EditorApplication::~EditorApplication()
 {
+	shaders.clear();
 	glfwDestroyWindow(window);
 	glfwTerminate();
 }
 
-void EditorApplication::Tick(float DeltaTime) {}
+void EditorApplication::Tick(float DeltaTime) 
+{
+}
 
 void EditorApplication::Render()
 {
+	shaders[0]->Bind();
+	// Render something here
+
 	{
 		ImGui::Begin("Global Properties");
 		ImGui::End();

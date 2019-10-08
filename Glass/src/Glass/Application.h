@@ -15,6 +15,8 @@ namespace Glass
 		Application();
 		virtual ~Application();
 
+		inline GLFWwindow* GetWindow() { return window; }
+
 		virtual void MainLoop();
 		virtual void Tick(float DeltaTime);
 		virtual void Render();
