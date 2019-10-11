@@ -2,7 +2,10 @@
 
 namespace Glass
 {
-	Shader::Shader(const char* vs, const char* fs)
+	std::unordered_map<std::string, std::shared_ptr<Shader>> ShaderLibrary::m_Shaders;
+
+	Shader::Shader(const char* vs, const char* fs) : 
+		shader_name("No-Name-Given")
 	{
 		std::string vertexCode;
 		std::string fragmentCode;

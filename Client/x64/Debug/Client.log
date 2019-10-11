@@ -1,2 +1,20 @@
-﻿  SceneLayer.cpp
+﻿  EditorApplication.cpp
+C:\Dev\Glass\Glass\src\Glass\Shader.h(16,26): warning C4251: 'Glass::Shader::shader_name': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Glass::Shader'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(4440): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+C:\Dev\Glass\Glass\src\Glass\Shader.h(59,76): warning C4251: 'Glass::ShaderLibrary::m_Shaders': class 'std::unordered_map<std::string,std::shared_ptr<Glass::Shader>,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' needs to have dll-interface to be used by clients of class 'Glass::ShaderLibrary'
+C:\Dev\Glass\Glass\src\Glass\Shader.h(59,76): warning C4251:         with
+C:\Dev\Glass\Glass\src\Glass\Shader.h(59,76): warning C4251:         [
+C:\Dev\Glass\Glass\src\Glass\Shader.h(59,76): warning C4251:             _Kty=std::string,
+C:\Dev\Glass\Glass\src\Glass\Shader.h(59,76): warning C4251:             _Ty=std::shared_ptr<Glass::Shader>
+C:\Dev\Glass\Glass\src\Glass\Shader.h(59,76): warning C4251:         ]
+C:\Dev\Glass\Glass\src\Glass\Shader.h(59): message : see declaration of 'std::unordered_map<std::string,std::shared_ptr<Glass::Shader>,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'
+C:\Dev\Glass\Glass\src\Glass\Shader.h(59): message :         with
+C:\Dev\Glass\Glass\src\Glass\Shader.h(59): message :         [
+C:\Dev\Glass\Glass\src\Glass\Shader.h(59): message :             _Kty=std::string,
+C:\Dev\Glass\Glass\src\Glass\Shader.h(59): message :             _Ty=std::shared_ptr<Glass::Shader>
+C:\Dev\Glass\Glass\src\Glass\Shader.h(59): message :         ]
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+  SceneLayer.cpp
+  Generating Code...
+C:\Dev\Glass\vendor\glfw\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
   Client.vcxproj -> C:\Dev\Glass\x64\Debug\Client.exe

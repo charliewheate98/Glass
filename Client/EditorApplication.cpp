@@ -34,24 +34,20 @@ EditorApplication::EditorApplication(const char* title)
 	glViewport(0, 0, GET_WINDOW_WIDTH, GET_WINDOW_HEIGHT);
 	glClearColor(0.f, 0.f, 0.f, 1.f);
 
-	layer = new SceneLayer();
-	LOG_INFO("Layer: gls_SceneLayer Instaniated");
+	m_SceneLayer = std::make_shared<SceneLayer>();
+	LOG_INFO("Layer: " + std::dynamic_pointer_cast<Glass::Layer>(m_SceneLayer)->GetName() + " Instaniated");
 }
 
-EditorApplication::~EditorApplication()
-{
-	glfwDestroyWindow(window);
-	glfwTerminate();
-}
+EditorApplication::~EditorApplication() {}
 
 void EditorApplication::Tick(float DeltaTime)
 {
-	layer->Update(DeltaTime);
+	m_SceneLayer->Update(DeltaTime);
 }
 
 void EditorApplication::Render()
 {
-	layer->Render();
+	m_SceneLayer->Render();
 }
 
 void EditorApplication::MainLoop()
@@ -67,5 +63,6 @@ void EditorApplication::MainLoop()
 		glfwSwapBuffers(window);
 	}
 
-	delete layer;
+	glfwDestroyWindow(window);
+	glfwTerminate();
 }

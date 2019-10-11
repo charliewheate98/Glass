@@ -1,8 +1,6 @@
 #include "SceneLayer.h"
 #include "Glass/Renderer.h"
 
-extern std::vector<std::shared_ptr<Glass::Shader>> shaders;
-
 SceneLayer::SceneLayer() 
 {
 	SetName("gls_SceneLayer");
@@ -12,11 +10,12 @@ SceneLayer::SceneLayer()
 	m_OrthographicCamera = std::make_unique<Glass::OrthographicCamera> (0.0f, 1920.0f, 1080.0f, 0.0f);
 
 	shader = std::make_shared<Glass::Shader>("Content/Shaders/basic.vs", "Content/Shaders/basic.fs");
+	shader->SetShaderName("Basic");
+
+	Glass::ShaderLibrary::Add(shader);
 }
 
-SceneLayer::~SceneLayer()
-{
-}
+SceneLayer::~SceneLayer(){}
 
 void SceneLayer::Update(float DeltaTime)
 {

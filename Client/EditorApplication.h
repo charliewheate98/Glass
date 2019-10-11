@@ -19,7 +19,7 @@
 class EditorApplication : public Glass::Application
 {
 private:
-	Glass::Layer* layer;
+	std::shared_ptr<Glass::Layer> m_SceneLayer;
 public:
 	EditorApplication(const char* title);
 	~EditorApplication();

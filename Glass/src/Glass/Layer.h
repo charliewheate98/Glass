@@ -21,6 +21,7 @@ namespace Glass
 		virtual void Render() {}
 
 		void SetName(const std::string& layer_name) { name = layer_name; }
+		const std::string& GetName() { return name; }
 
 		uint32_t& GetZIndex() { return ZIndex; }
 	};
