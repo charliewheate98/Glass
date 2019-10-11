@@ -2,7 +2,11 @@
 // (headers)
 
 // See imgui.cpp file for documentation.
-// Call and read ImGui::ShowDemoWindow() in imgui_demo.cpp for demo code.
+// Call and read ImGui::ShowDemo
+
+
+
+() in imgui_demo.cpp for demo code.
 // Newcomers, read 'Programmer guide' in imgui.cpp for notes on how to setup Dear ImGui in your codebase.
 // Get latest version at https://github.com/ocornut/imgui
 

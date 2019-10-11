@@ -1,5 +1,4 @@
 #include "Shader.h"
-#include "Logger.h"
 
 namespace Glass
 {
@@ -63,9 +62,9 @@ namespace Glass
 		glDeleteProgram(program);
 	}
 
-	GLuint Shader::LoadUniform(const char& name)
+	GLuint Shader::LoadUniform(const std::string& name)
 	{
-		return glGetUniformLocation(program, &name);
+		return glGetUniformLocation(program, name.c_str());
 	}
 
 	void Shader::SetInt(GLint loc, int val) const
@@ -78,14 +77,14 @@ namespace Glass
 		SetInt(loc, val);
 	}
 
-	void Shader::SetVector3(GLint loc, Glass::Vector4& vec) const
+	void Shader::SetVector3(GLint loc, glm::vec3 &vec) const
 	{
 		glUniform3f(loc, vec.x, vec.y, vec.z);
 	}
 
-	void Shader::SetMatrix4(GLint loc, Glass::Matrix4& mat) const
+	void Shader::SetMatrix4(GLint loc, glm::mat4 mat) const
 	{
-		glUniformMatrix4fv(loc, 1, GL_FALSE, (const GLfloat*)mat.n);
+		glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(mat));
 	}
 
 	void Shader::CheckCompileErrors(int shader, std::string type)
@@ -100,7 +99,7 @@ namespace Glass
 			if (!success)
 			{
 				glGetShaderInfoLog(shader, 1024, NULL, infoLog);
-				LOG_ERROR("ERROR::SHADER_COMPILATION of type " + type + " " + infoLog);
+				std::cerr << "ERROR::SHADER_COMPILATION of type " << type << " " << infoLog << std::endl;
 			}
 		}
 		else
@@ -110,7 +109,7 @@ namespace Glass
 			if (!success)
 			{
 				glGetShaderInfoLog(shader, 1024, NULL, infoLog);
-				LOG_ERROR("ERROR::SHADER_LINKING of type " + type + " " + infoLog);
+				std::cerr << "EERROR::SHADER_LINKING of type " << type << " " << infoLog << std::endl;
 			}
 		}
 	}

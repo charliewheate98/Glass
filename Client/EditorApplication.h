@@ -1,14 +1,16 @@
 #pragma once
 
+// Lib Classes
 #include <GL/glew.h>
-#include <GLFW/glfw3.h>
 
-#include "ImGui/imgui.h"
-#include "ImGui/imgui_impl_glfw.h"
-#include "ImGui/imgui_impl_opengl3.h"
+// Editor Classes
+#include "Sprite.h"
 
+// Engine Classes
+#include "Glass/Input.h"
 #include "Glass/Shader.h"
 #include "Glass/Glass.h"
+#include "Glass/Layer.h"
 
 #define GET_WINDOW_WIDTH 1920
 #define GET_WINDOW_HEIGHT 1080
@@ -16,14 +18,13 @@
 
 class EditorApplication : public Glass::Application
 {
-private:	
-	std::vector<std::shared_ptr<Glass::Shader>> shaders;
+private:
+	Glass::Layer* layer;
 public:
 	EditorApplication(const char* title);
 	~EditorApplication();
 
-	virtual void MainLoop()			   override;
+	virtual void MainLoop()	           override;
 	virtual void Tick(float DeltaTime) override;
 	virtual void Render()			   override;
 };
-

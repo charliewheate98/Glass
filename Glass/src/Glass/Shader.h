@@ -1,8 +1,9 @@
 #pragma once
 
 #include "pch.h"
-#include "Maths.h"
 #include "Core.h"
+#include <glm.hpp>
+#include <gtc/type_ptr.hpp>
 #include <GL/glew.h>
 
 namespace Glass
@@ -15,12 +16,12 @@ namespace Glass
 		Shader(const char* vs, const char* fs);
 		~Shader();
 
-		GLuint LoadUniform(const char& name);
+		GLuint LoadUniform(const std::string& name);
 
 		void SetInt(GLint loc, int val) const;
 		void SetBool(GLint loc, bool val) const;
-		void SetVector3(GLint loc, Glass::Vector4& vec) const;
-		void SetMatrix4(GLint loc, Glass::Matrix4& mat) const;
+		void SetVector3(GLint loc, glm::vec3 &vec) const;
+		void SetMatrix4(GLint loc, glm::mat4 mat) const;
 		 
 		void CheckCompileErrors(int shader, std::string type);
 		void Bind();

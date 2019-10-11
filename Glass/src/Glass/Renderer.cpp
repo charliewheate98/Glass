@@ -2,20 +2,30 @@
 
 namespace Glass
 {
-	void Renderer::Begin()
+	UniqueScope<Renderer::SceneData> Renderer::m_SceneData = CreateUniqueScope<Renderer::SceneData>();
+
+	void Renderer::Init()
 	{
-		// camera = std::make_unique<Camera>(param's);
+		RendererCommands::Init();
 	}
 
-	void Renderer::Submit(Object* obj, Shader* shader)
+	void Renderer::BeginScene(OrthographicCamera& camera)
+	{
+		RendererCommands::Clear();
+
+		Renderer::m_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
+	}
+
+	void Renderer::EndScene()
+	{}
+
+	void Renderer::Submit(const std::shared_ptr<Object>& obj, const std::shared_ptr<Glass::Shader>& shader, const glm::mat4& transform)
 	{
 		shader->Bind();
 
-		obj->Render();
-	}
+		shader->SetMatrix4(shader->LoadUniform("m_ViewProjection"), Renderer::m_SceneData->ViewProjectionMatrix);
+		shader->SetMatrix4(shader->LoadUniform("m_Transform"), transform);
 
-	void Renderer::Clear()
-	{
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		obj->Render();
 	}
 }

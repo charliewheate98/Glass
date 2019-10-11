@@ -4,6 +4,10 @@
 
 int main(int argc, char** argv)
 {
+	Glass::Logger::Create();
+
+	LOG_INFO("Glass Engine Initalised");
+
 	// Allocate the editor app on the STACK 
 	// [faster then allocating on HELP]
 	EditorApplication editor_app("Glass Editor");

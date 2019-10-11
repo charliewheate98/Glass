@@ -118,7 +118,11 @@ Index of this file:
 
 // Forward Declarations
 static void ShowExampleAppDocuments(bool* p_open);
-static void ShowExampleAppMainMenuBar();
+static void ShowExampleAppMainMenuBar
+
+
+
+
 static void ShowExampleAppConsole(bool* p_open);
 static void ShowExampleAppLog(bool* p_open);
 static void ShowExampleAppLayout(bool* p_open);

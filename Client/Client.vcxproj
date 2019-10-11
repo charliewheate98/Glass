@@ -70,11 +70,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Dev\Glass\vendor\glew\include;C:\Dev\Glass\vendor\glfw\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Owner\Desktop\Octagram\libs\glm\glm;C:\Dev\Glass\vendor\glew\include;C:\Dev\Glass\vendor\glfw\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Dev\Glass\vendor\glew\lib\Release\x64;C:\Dev\Glass\vendor\glfw\lib-vc2019;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Dev\Glass\vendor\glew\include;C:\Dev\Glass\vendor\glfw\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Owner\Desktop\Octagram\libs\glm\glm;C:\Dev\Glass\vendor\glew\include;C:\Dev\Glass\vendor\glfw\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Dev\Glass\vendor\glew\lib\Release\x64;C:\Dev\Glass\vendor\glfw\lib-vc2019;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -135,13 +135,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="EditorApplication.cpp" />
-    <ClCompile Include="ImGui\imgui.cpp" />
-    <ClCompile Include="ImGui\imgui_demo.cpp" />
-    <ClCompile Include="ImGui\imgui_draw.cpp" />
-    <ClCompile Include="ImGui\imgui_impl_glfw.cpp" />
-    <ClCompile Include="ImGui\imgui_impl_opengl3.cpp" />
-    <ClCompile Include="ImGui\imgui_widgets.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="SceneLayer.cpp" />
+    <ClCompile Include="Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Glass\Glass.vcxproj">
@@ -150,14 +146,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EditorApplication.h" />
-    <ClInclude Include="ImGui\imconfig.h" />
-    <ClInclude Include="ImGui\imgui.h" />
-    <ClInclude Include="ImGui\imgui_impl_glfw.h" />
-    <ClInclude Include="ImGui\imgui_impl_opengl3.h" />
-    <ClInclude Include="ImGui\imgui_internal.h" />
-    <ClInclude Include="ImGui\imstb_rectpack.h" />
-    <ClInclude Include="ImGui\imstb_textedit.h" />
-    <ClInclude Include="ImGui\imstb_truetype.h" />
+    <ClInclude Include="SceneLayer.h" />
+    <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

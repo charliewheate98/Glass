@@ -22,6 +22,3 @@ namespace Glass
 		virtual void Render();
 	};
 }
-
-
-

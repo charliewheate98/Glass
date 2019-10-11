@@ -11,9 +11,8 @@ namespace Glass
 	protected:
 		std::string name;
 		uint32_t ZIndex;
-	private:
+
 		std::unique_ptr<Renderer> LayerRenderer;
-		std::unique_ptr<Camera>   OrthoCamera;
 	public:
 		Layer();
 		virtual ~Layer() {}
