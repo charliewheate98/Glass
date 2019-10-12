@@ -140,7 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Glass\OrthographicCameraController.h" />
+    <ClInclude Include="src\Glass\OpenGLTexture.h" />
     <ClInclude Include="src\Glass\Input.h" />
     <ClInclude Include="src\Glass\OrthographicCamera.h" />
     <ClInclude Include="src\Glass\Object.h" />
@@ -153,10 +153,11 @@
     <ClInclude Include="src\Glass\Logger.h" />
     <ClInclude Include="src\Glass\Core.h" />
     <ClInclude Include="src\Glass\pch.h" />
+    <ClInclude Include="src\Glass\stb_image.h" />
     <ClInclude Include="src\Glass\Vertex.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Glass\OrthographicCameraController.cpp" />
+    <ClCompile Include="src\Glass\OpenGLTexture.cpp" />
     <ClCompile Include="src\Glass\OrthographicCamera.cpp" />
     <ClCompile Include="src\Glass\Application.cpp" />
     <ClCompile Include="src\Glass\Shader.cpp" />

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core.h"
+#include "OpenGLTexture.h"
 #include "Shader.h"
 #include "Object.h"
 #include "OrthographicCamera.h"
@@ -12,9 +12,6 @@ namespace Glass
 	public:
 		static void Init()
 		{
-			glEnable(GL_DEPTH_TEST);
-			glEnable(GL_CULL_FACE);
-			glEnable(GL_TEXTURE_CUBE_MAP_SEAMLESS);
 		}
 
 		static void Clear()
@@ -30,11 +27,23 @@ namespace Glass
 		struct SceneData
 		{
 			glm::mat4 ViewProjectionMatrix;
+
+			GLuint loc_view;
+			GLuint loc_Transform;
+			GLuint loc_diffuse;
 		};
+
+		//static GLuint loc_view;
+		//static GLuint loc_Transform;
+		//static GLuint loc_diffuse;
+
+		static std::shared_ptr<Glass::Shader> m_Shader;
+
+		static OpenGLTexture* texture;
 
 		static UniqueScope<SceneData> m_SceneData;
 	public:
-		static void Init();
+		static void Init(std::shared_ptr<Glass::Shader>& shader);
 		static void BeginScene(OrthographicCamera& camera);
 		static void EndScene();
 		static void Submit(const std::shared_ptr<Object>& obj, const std::shared_ptr<Glass::Shader>& shader, const glm::mat4& transform);

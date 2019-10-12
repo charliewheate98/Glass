@@ -27,6 +27,9 @@
     <ClCompile Include="SceneLayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="OrthographicCameraController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EditorApplication.h">
@@ -38,5 +41,16 @@
     <ClInclude Include="SceneLayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="OrthographicCameraController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\x64\Debug\Content\Shaders\basic.vs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\x64\Debug\Content\Shaders\basic.fs">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

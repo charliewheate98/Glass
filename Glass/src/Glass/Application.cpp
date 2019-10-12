@@ -3,6 +3,8 @@
 
 namespace Glass
 {
+	GLFWwindow* Application::window;
+
 	Application::Application()
 	{
 	}
@@ -15,7 +17,7 @@ namespace Glass
 	{
 	}
 
-	void Application::Tick(float DeltaTime)
+	void Application::Tick()
 	{
 	}
 

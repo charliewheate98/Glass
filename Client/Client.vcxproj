@@ -136,6 +136,7 @@
   <ItemGroup>
     <ClCompile Include="EditorApplication.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="OrthographicCameraController.cpp" />
     <ClCompile Include="SceneLayer.cpp" />
     <ClCompile Include="Sprite.cpp" />
   </ItemGroup>
@@ -146,8 +147,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EditorApplication.h" />
+    <ClInclude Include="OrthographicCameraController.h" />
     <ClInclude Include="SceneLayer.h" />
     <ClInclude Include="Sprite.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\x64\Debug\Content\Shaders\basic.fs" />
+    <None Include="..\x64\Debug\Content\Shaders\basic.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

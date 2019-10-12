@@ -25,7 +25,7 @@
 	#define gls_STORE_BUFFER_DATA(target, buffer, allocation_size, data) gls_BIND_BUFFER(target, buffer); \
 																		 glBufferData(target, allocation_size, data, GL_STATIC_DRAW)
 
-	#define gls_SET_SHADER_ATTRIB(index, attribute_size, stride) glVertexAttribPointer(index, attribute_size, GL_FLOAT, GL_FALSE, stride, (void*)0) 
+	#define gls_SET_SHADER_ATTRIB(index, attribute_size, stride, voidparam) glVertexAttribPointer(index, attribute_size, GL_FLOAT, GL_FALSE, stride, voidparam) 
 	#define gls_ENABLE_SHADED_ATTRIB_INDEX(index) glEnableVertexAttribArray(index)
 
 	#define DRAW_ELEMENTS(mode, num_indices) glDrawElements(mode, num_indices, GL_UNSIGNED_INT, 0)

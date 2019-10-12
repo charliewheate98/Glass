@@ -1,17 +1,17 @@
 #pragma once
 
-#include "pch.h"
-#include "Core.h"
-#include <GLFW/glfw3.h>
+#include "Application.h"
 
 namespace Glass
 {
 	class Input 
 	{
 	public:
-		static bool IsKeyPressed(GLFWwindow& window, int keycode)
+		static bool IsKeyPressed(int keycode)
 		{
-			auto state = glfwGetKey(&window, keycode);
+			auto window = &Application::GetWindow();
+			auto state = glfwGetKey(window, keycode);
+		
 			return state;
 		}
 	};

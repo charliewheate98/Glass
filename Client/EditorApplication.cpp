@@ -12,6 +12,7 @@ EditorApplication::EditorApplication(const char* title)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
 	window = glfwCreateWindow(GET_WINDOW_WIDTH, GET_WINDOW_HEIGHT, title, NULL, NULL);
 
@@ -23,6 +24,7 @@ EditorApplication::EditorApplication(const char* title)
 
 	glfwMakeContextCurrent(window);
 	glfwSetFramebufferSizeCallback(window, GetFramebufferSize);
+	glfwSwapInterval(1);
 
 	GLenum glewStatus = glewInit();
 	if (glewStatus != GLEW_OK)
@@ -35,14 +37,13 @@ EditorApplication::EditorApplication(const char* title)
 	glClearColor(0.f, 0.f, 0.f, 1.f);
 
 	m_SceneLayer = std::make_shared<SceneLayer>();
-	LOG_INFO("Layer: " + std::dynamic_pointer_cast<Glass::Layer>(m_SceneLayer)->GetName() + " Instaniated");
 }
 
 EditorApplication::~EditorApplication() {}
 
-void EditorApplication::Tick(float DeltaTime)
+void EditorApplication::Tick()
 {
-	m_SceneLayer->Update(DeltaTime);
+	m_SceneLayer->Update(m_DeltaTime);
 }
 
 void EditorApplication::Render()
@@ -52,14 +53,23 @@ void EditorApplication::Render()
 
 void EditorApplication::MainLoop()
 {
+	GLfloat lastFrame = 0.0f;
+
 	while (!glfwWindowShouldClose(window))
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		Tick(0.f);
+		glfwPollEvents();
+
+		// Calculate delta time
+		GLfloat currentFrame = glfwGetTime();
+		m_DeltaTime = currentFrame - lastFrame;
+		lastFrame = currentFrame;
+		glfwPollEvents();
+
+		Tick();
 		Render();
 
-		glfwPollEvents();
 		glfwSwapBuffers(window);
 	}
 

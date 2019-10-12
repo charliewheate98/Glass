@@ -10,15 +10,15 @@ namespace Glass
 	class GLASS_API Application
 	{
 	protected:
-		GLFWwindow* window;
+		static GLFWwindow* window;
 	public:
 		Application();
 		virtual ~Application();
 
-		inline GLFWwindow* GetWindow() { return window; }
+		static GLFWwindow& GetWindow() { return *window; }
 
 		virtual void MainLoop();
-		virtual void Tick(float DeltaTime);
+		virtual void Tick();
 		virtual void Render();
 	};
 }

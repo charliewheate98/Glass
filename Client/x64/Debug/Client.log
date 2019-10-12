@@ -13,8 +13,15 @@ C:\Dev\Glass\Glass\src\Glass\Shader.h(59): message :         [
 C:\Dev\Glass\Glass\src\Glass\Shader.h(59): message :             _Kty=std::string,
 C:\Dev\Glass\Glass\src\Glass\Shader.h(59): message :             _Ty=std::shared_ptr<Glass::Shader>
 C:\Dev\Glass\Glass\src\Glass\Shader.h(59): message :         ]
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
   SceneLayer.cpp
+C:\Dev\Glass\Client\EditorApplication.cpp(65,24): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Dev\Glass\Glass\src\Glass\OrthographicCamera.h(27,31): warning C4251: 'Glass::OrthographicCamera::m_ProjectionMatrix': struct 'glm::tmat4x4<float,0>' needs to have dll-interface to be used by clients of class 'Glass::OrthographicCamera'
+C:\Users\Owner\Desktop\Octagram\libs\glm\glm\detail\type_mat.hpp(304): message : see declaration of 'glm::tmat4x4<float,0>'
+C:\Dev\Glass\Glass\src\Glass\OrthographicCamera.h(28,25): warning C4251: 'Glass::OrthographicCamera::m_ViewMatrix': struct 'glm::tmat4x4<float,0>' needs to have dll-interface to be used by clients of class 'Glass::OrthographicCamera'
+C:\Users\Owner\Desktop\Octagram\libs\glm\glm\detail\type_mat.hpp(304): message : see declaration of 'glm::tmat4x4<float,0>'
+C:\Dev\Glass\Glass\src\Glass\OrthographicCamera.h(29,35): warning C4251: 'Glass::OrthographicCamera::m_ViewProjectionMatrix': struct 'glm::tmat4x4<float,0>' needs to have dll-interface to be used by clients of class 'Glass::OrthographicCamera'
+C:\Users\Owner\Desktop\Octagram\libs\glm\glm\detail\type_mat.hpp(304): message : see declaration of 'glm::tmat4x4<float,0>'
+C:\Dev\Glass\Glass\src\Glass\OrthographicCamera.h(31,46): warning C4251: 'Glass::OrthographicCamera::m_Position': struct 'glm::tvec3<float,0>' needs to have dll-interface to be used by clients of class 'Glass::OrthographicCamera'
   Generating Code...
-C:\Dev\Glass\vendor\glfw\include\GLFW\glfw3.h(104): message : see previous definition of 'APIENTRY'
+C:\Users\Owner\Desktop\Octagram\libs\glm\glm\detail\type_vec.hpp(243): message : see declaration of 'glm::tvec3<float,0>'
   Client.vcxproj -> C:\Dev\Glass\x64\Debug\Client.exe
