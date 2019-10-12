@@ -2,8 +2,6 @@
 2D Game Engine
 ---------------------------------------
 
-Code may not be used for commerical projects. If you wish to use Glass Engine contact me on, charliewheate42@gmail.com
-
 ---------------------------
 What is the Glass Engine? -
 ---------------------------
