@@ -1,6 +1,5 @@
 # Glass
 2D Game Engine
-(C) Octagram, All Rights Reserved 2019
 ---------------------------------------
 
 Code may not be used for commerical projects. If you wish to use Glass Engine contact me on, charliewheate42@gmail.com
@@ -34,3 +33,5 @@ Features -
 - Spritesheets
 - Spritesheet Animations
 - GUI
+
+(C) Octagram, All Rights Reserved 2019
