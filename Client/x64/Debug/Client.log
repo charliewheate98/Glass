@@ -1,27 +1,10 @@
-﻿  EditorApplication.cpp
-C:\Dev\Glass\Glass\src\Glass\Shader.h(16,26): warning C4251: 'Glass::Shader::shader_name': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Glass::Shader'
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.23.28105\include\xstring(4440): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-C:\Dev\Glass\Glass\src\Glass\Shader.h(59,76): warning C4251: 'Glass::ShaderLibrary::m_Shaders': class 'std::unordered_map<std::string,std::shared_ptr<Glass::Shader>,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>' needs to have dll-interface to be used by clients of class 'Glass::ShaderLibrary'
-C:\Dev\Glass\Glass\src\Glass\Shader.h(59,76): warning C4251:         with
-C:\Dev\Glass\Glass\src\Glass\Shader.h(59,76): warning C4251:         [
-C:\Dev\Glass\Glass\src\Glass\Shader.h(59,76): warning C4251:             _Kty=std::string,
-C:\Dev\Glass\Glass\src\Glass\Shader.h(59,76): warning C4251:             _Ty=std::shared_ptr<Glass::Shader>
-C:\Dev\Glass\Glass\src\Glass\Shader.h(59,76): warning C4251:         ]
-C:\Dev\Glass\Glass\src\Glass\Shader.h(59): message : see declaration of 'std::unordered_map<std::string,std::shared_ptr<Glass::Shader>,std::hash<_Kty>,std::equal_to<_Kty>,std::allocator<std::pair<const _Kty,_Ty>>>'
-C:\Dev\Glass\Glass\src\Glass\Shader.h(59): message :         with
-C:\Dev\Glass\Glass\src\Glass\Shader.h(59): message :         [
-C:\Dev\Glass\Glass\src\Glass\Shader.h(59): message :             _Kty=std::string,
-C:\Dev\Glass\Glass\src\Glass\Shader.h(59): message :             _Ty=std::shared_ptr<Glass::Shader>
-C:\Dev\Glass\Glass\src\Glass\Shader.h(59): message :         ]
-  SceneLayer.cpp
-C:\Dev\Glass\Client\EditorApplication.cpp(65,24): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Dev\Glass\Glass\src\Glass\OrthographicCamera.h(27,31): warning C4251: 'Glass::OrthographicCamera::m_ProjectionMatrix': struct 'glm::tmat4x4<float,0>' needs to have dll-interface to be used by clients of class 'Glass::OrthographicCamera'
+﻿  SceneLayer.cpp
+C:\Dev\Glass\Glass\src\Glass\Object.h(12,24): warning C4251: 'Glass::Object::m_Transform': struct 'glm::tmat4x4<float,0>' needs to have dll-interface to be used by clients of class 'Glass::Object'
 C:\Users\Owner\Desktop\Octagram\libs\glm\glm\detail\type_mat.hpp(304): message : see declaration of 'glm::tmat4x4<float,0>'
-C:\Dev\Glass\Glass\src\Glass\OrthographicCamera.h(28,25): warning C4251: 'Glass::OrthographicCamera::m_ViewMatrix': struct 'glm::tmat4x4<float,0>' needs to have dll-interface to be used by clients of class 'Glass::OrthographicCamera'
-C:\Users\Owner\Desktop\Octagram\libs\glm\glm\detail\type_mat.hpp(304): message : see declaration of 'glm::tmat4x4<float,0>'
-C:\Dev\Glass\Glass\src\Glass\OrthographicCamera.h(29,35): warning C4251: 'Glass::OrthographicCamera::m_ViewProjectionMatrix': struct 'glm::tmat4x4<float,0>' needs to have dll-interface to be used by clients of class 'Glass::OrthographicCamera'
-C:\Users\Owner\Desktop\Octagram\libs\glm\glm\detail\type_mat.hpp(304): message : see declaration of 'glm::tmat4x4<float,0>'
-C:\Dev\Glass\Glass\src\Glass\OrthographicCamera.h(31,46): warning C4251: 'Glass::OrthographicCamera::m_Position': struct 'glm::tvec3<float,0>' needs to have dll-interface to be used by clients of class 'Glass::OrthographicCamera'
-  Generating Code...
+C:\Dev\Glass\Glass\src\Glass\Object.h(14,23): warning C4251: 'Glass::Object::m_Position': struct 'glm::tvec3<float,0>' needs to have dll-interface to be used by clients of class 'Glass::Object'
 C:\Users\Owner\Desktop\Octagram\libs\glm\glm\detail\type_vec.hpp(243): message : see declaration of 'glm::tvec3<float,0>'
+C:\Dev\Glass\Glass\src\Glass\Object.h(15,44): warning C4251: 'Glass::Object::m_Scale': struct 'glm::tvec3<float,0>' needs to have dll-interface to be used by clients of class 'Glass::Object'
+C:\Users\Owner\Desktop\Octagram\libs\glm\glm\detail\type_vec.hpp(243): message : see declaration of 'glm::tvec3<float,0>'
+C:\Dev\Glass\Glass\src\Glass\Mesh.h(20,42): warning C4251: 'Glass::Mesh::m_Texture': class 'std::shared_ptr<Glass::Texture2D>' needs to have dll-interface to be used by clients of class 'Glass::Mesh'
+C:\Dev\Glass\Glass\src\Glass\Core.h(46): message : see declaration of 'std::shared_ptr<Glass::Texture2D>'
   Client.vcxproj -> C:\Dev\Glass\x64\Debug\Client.exe

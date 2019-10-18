@@ -5,6 +5,8 @@
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
 
+#pragma warning(disable:4251)
+
 namespace Glass
 {
 	class GLASS_API OrthographicCamera

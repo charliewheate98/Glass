@@ -1,19 +1,16 @@
 #pragma once
 
-#include "OpenGLTexture.h"
-#include "Shader.h"
-#include "Object.h"
+#include "OpenGLShader.h"
+#include "Mesh.h"
 #include "OrthographicCamera.h"
+#include "Vertex.h"
 
 namespace Glass
 {
 	class RendererCommands
 	{
 	public:
-		static void Init()
-		{
-		}
-
+		static void Init() {}
 		static void Clear()
 		{
 			glClear(GL_COLOR_BUFFER_BIT);
@@ -30,23 +27,22 @@ namespace Glass
 
 			GLuint loc_view;
 			GLuint loc_Transform;
-			GLuint loc_diffuse;
+			GLuint loc_Diffuse;
 		};
+		SceneData m_SceneData;
 
-		//static GLuint loc_view;
-		//static GLuint loc_Transform;
-		//static GLuint loc_diffuse;
+		std::shared_ptr<Glass::OpenGLShader> m_Shader;
 
-		static std::shared_ptr<Glass::Shader> m_Shader;
+		VertexArray* m_VertexArray;
+		VertexBuffer* m_VertexBuffer;
+		IndexBuffer* m_IndexBuffer;
 
-		static OpenGLTexture* texture;
-
-		static UniqueScope<SceneData> m_SceneData;
+		unsigned int m_Buffer;
 	public:
-		static void Init(std::shared_ptr<Glass::Shader>& shader);
-		static void BeginScene(OrthographicCamera& camera);
-		static void EndScene();
-		static void Submit(const std::shared_ptr<Object>& obj, const std::shared_ptr<Glass::Shader>& shader, const glm::mat4& transform);
+		void Init(std::shared_ptr<Glass::OpenGLShader>& shader);
+		void Begin(OrthographicCamera& camera);
+		void End();
+		void Submit(const std::shared_ptr<Object>& obj, const std::shared_ptr<Glass::OpenGLShader>& shader);
 	};
 }
 

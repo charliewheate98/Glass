@@ -1,43 +1,37 @@
 #include "Renderer.h"
 
+#define MAX_SPRITES 1000
+
 namespace Glass
 {
-	UniqueScope<Renderer::SceneData> Renderer::m_SceneData = CreateUniqueScope<Renderer::SceneData>();
-	OpenGLTexture* Renderer::texture;
-	std::shared_ptr<Glass::Shader> Renderer::m_Shader;
-
-	void Renderer::Init(std::shared_ptr<Glass::Shader>& shader)
+	void Renderer::Init(std::shared_ptr<Glass::OpenGLShader>& shader)
 	{
 		m_Shader = shader;
 
 		RendererCommands::Init();
-	
-		texture = new OpenGLTexture("Content/Default.png");
 
-		m_SceneData->loc_view = m_Shader->LoadUniform("m_ViewProjection");
-		m_SceneData->loc_Transform = m_Shader->LoadUniform("m_Transform");
-		m_SceneData->loc_diffuse = m_Shader->LoadUniform("m_Diffuse");
+		m_SceneData.loc_view = m_Shader->LoadUniform("m_ViewProjection");
+		m_SceneData.loc_Transform = m_Shader->LoadUniform("m_Transform");
+		m_SceneData.loc_Diffuse = m_Shader->LoadUniform("m_Diffuse");
 	}
 
-	void Renderer::BeginScene(OrthographicCamera& camera)
+	void Renderer::Begin(OrthographicCamera& camera)
 	{
 		RendererCommands::Clear();
 
-		Renderer::m_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
+		m_SceneData.ViewProjectionMatrix = camera.GetViewProjectionMatrix();
 	}
 
-	void Renderer::EndScene()
+	void Renderer::End()
 	{}
 
-	void Renderer::Submit(const std::shared_ptr<Object>& obj, const std::shared_ptr<Glass::Shader>& shader, const glm::mat4& transform)
+	void Renderer::Submit(const std::shared_ptr<Object>& obj, const std::shared_ptr<Glass::OpenGLShader>& shader)
 	{
 		shader->Bind();
 
-		shader->SetMatrix4(m_SceneData->loc_view, Renderer::m_SceneData->ViewProjectionMatrix);
-		shader->SetMatrix4(m_SceneData->loc_Transform, transform);
-		shader->SetInt(m_SceneData->loc_diffuse, 0);
-
-		texture->Bind();
+		shader->SetInt(m_SceneData.loc_Diffuse, 0);
+		shader->SetMatrix4(m_SceneData.loc_view, m_SceneData.ViewProjectionMatrix);
+		shader->SetMatrix4(m_SceneData.loc_Transform, obj->GetTransform());
 
 		obj->Render();
 	}

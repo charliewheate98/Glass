@@ -1,10 +1,10 @@
-#include "Shader.h"
+#include "OpenGLShader.h"
 
 namespace Glass
 {
-	std::unordered_map<std::string, std::shared_ptr<Shader>> ShaderLibrary::m_Shaders;
+	std::unordered_map<std::string, std::shared_ptr<OpenGLShader>> ShaderLibrary::m_Shaders;
 
-	Shader::Shader(const char* vs, const char* fs) : 
+	OpenGLShader::OpenGLShader(const char* vs, const char* fs) :
 		shader_name("No-Name-Given")
 	{
 		std::string vertexCode;
@@ -60,37 +60,37 @@ namespace Glass
 		glDeleteShader(fragment);
 	}
 
-	Shader::~Shader() 
+	OpenGLShader::~OpenGLShader()
 	{
 		glDeleteProgram(program);
 	}
 
-	GLuint Shader::LoadUniform(const std::string& name)
+	GLuint OpenGLShader::LoadUniform(const std::string& name)
 	{
 		return glGetUniformLocation(program, name.c_str());
 	}
 
-	void Shader::SetInt(GLint loc, int val) const
+	void OpenGLShader::SetInt(GLint loc, int val) const
 	{
 		glUniform1i(loc, val);
 	}
 
-	void Shader::SetBool(GLint loc, bool val) const
+	void OpenGLShader::SetBool(GLint loc, bool val) const
 	{
 		SetInt(loc, val);
 	}
 
-	void Shader::SetVector3(GLint loc, glm::vec3 &vec) const
+	void OpenGLShader::SetVector3(GLint loc, glm::vec3 &vec) const
 	{
 		glUniform3f(loc, vec.x, vec.y, vec.z);
 	}
 
-	void Shader::SetMatrix4(GLint loc, glm::mat4 mat) const
+	void OpenGLShader::SetMatrix4(GLint loc, glm::mat4 mat) const
 	{
 		glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(mat));
 	}
 
-	void Shader::CheckCompileErrors(int shader, std::string type)
+	void OpenGLShader::CheckCompileErrors(int shader, std::string type)
 	{
 		int success;
 		char infoLog[1024];
@@ -117,7 +117,7 @@ namespace Glass
 		}
 	}
 
-	void Shader::Bind()
+	void OpenGLShader::Bind()
 	{
 		glUseProgram(program);
 	}

@@ -138,7 +138,6 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="OrthographicCameraController.cpp" />
     <ClCompile Include="SceneLayer.cpp" />
-    <ClCompile Include="Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Glass\Glass.vcxproj">
@@ -149,7 +148,6 @@
     <ClInclude Include="EditorApplication.h" />
     <ClInclude Include="OrthographicCameraController.h" />
     <ClInclude Include="SceneLayer.h" />
-    <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\x64\Debug\Content\Shaders\basic.fs" />

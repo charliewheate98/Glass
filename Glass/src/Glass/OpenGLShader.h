@@ -7,16 +7,21 @@
 #include <gtc/type_ptr.hpp>
 #include <GL/glew.h>
 
+#pragma warning(disable:4251)
+#pragma warning(disable:4715)
+
 namespace Glass
 {
-	class GLASS_API Shader
+	class GLASS_API OpenGLShader
 	{
 	private:
 		GLuint program;
 		std::string shader_name;
 	public:
-		Shader(const char* vs, const char* fs);
-		~Shader();
+		OpenGLShader(const char* vs, const char* fs);
+		~OpenGLShader();
+
+		GLuint& GetProgram() { return program; }
 
 		const std::string& GetShaderName() { return shader_name; }
 		void SetShaderName(const std::string& name) { shader_name = name; }
@@ -40,7 +45,7 @@ namespace Glass
 			m_Shaders.reserve(library_size);
 		}
 		
-		static void Add(std::shared_ptr<Shader>& shader)
+		static void Add(std::shared_ptr<OpenGLShader>& shader)
 		{
 			auto& name = shader->GetShaderName();
 			m_Shaders.insert( { name, shader } );
@@ -51,11 +56,12 @@ namespace Glass
 			return m_Shaders.find(name) != m_Shaders.end();
 		}
 
-		static SharedScope<Shader>& Get(const std::string& name)
+		static SharedScope<OpenGLShader>& Get(const std::string& name)
 		{
-			if (Exists(name)) return m_Shaders[name];
+			if (Exists(name))
+				return m_Shaders[name];
 		}
 	private:
-		static std::unordered_map<std::string, std::shared_ptr<Shader>> m_Shaders;
+		static std::unordered_map<std::string, std::shared_ptr<OpenGLShader>> m_Shaders;
 	};
 }

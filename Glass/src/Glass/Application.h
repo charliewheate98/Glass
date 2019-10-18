@@ -2,6 +2,7 @@
 
 #include "pch.h"
 #include "Core.h"
+#include "Timestep.h"
 
 #include <GLFW/glfw3.h>
 
@@ -18,7 +19,7 @@ namespace Glass
 		static GLFWwindow& GetWindow() { return *window; }
 
 		virtual void MainLoop();
-		virtual void Tick();
+		virtual void Tick(Timestep delta);
 		virtual void Render();
 	};
 }

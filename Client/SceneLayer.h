@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Sprite.h"
+#include "Glass/Mesh.h"
 #include "OrthographicCameraController.h"
+#include "Glass/OpenGLShader.h"
 #include "Glass/Layer.h"
 
 class SceneLayer : public Glass::Layer
@@ -13,11 +14,11 @@ public:
 	void Update(float DeltaTime) override;
 	void Render() override;
 private:
-	std::shared_ptr<Glass::Shader> shader;
+	std::shared_ptr<Glass::OpenGLShader> shader;
 
 	std::unique_ptr<Glass::OrthographicCamera> m_OrthographicCamera;
 	std::unique_ptr<OrthographicCameraController> m_OrthographicCameraController;
 
-	std::shared_ptr<Mesh> m_Mesh;
+	std::vector<std::shared_ptr<Glass::Mesh>> m_Meshes;
 };
 

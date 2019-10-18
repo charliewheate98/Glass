@@ -14,11 +14,11 @@ void OrthographicCameraController::SimulateControls(Glass::OrthographicCamera& c
 
 	if (Glass::Input::IsKeyPressed(GLFW_KEY_A) == GLFW_PRESS)
 	{
-		camera.GetPosition() += (glm::vec3(1.0f, 0.0f, 0.0f) * MoveSpeed) * DeltaTime;
+		camera.GetPosition() += (glm::vec3(-1.0f, 0.0f, 0.0f) * MoveSpeed) * DeltaTime;
 	}
 	else if (Glass::Input::IsKeyPressed(GLFW_KEY_D) == GLFW_PRESS)
 	{
-		camera.GetPosition() += (glm::vec3(-1.0f, 0.0f, 0.0f) * MoveSpeed) * DeltaTime;
+		camera.GetPosition() += (glm::vec3(1.0f, 0.0f, 0.0f) * MoveSpeed) * DeltaTime;
 	}
 	if (Glass::Input::IsKeyPressed(GLFW_KEY_W) == GLFW_PRESS)
 	{

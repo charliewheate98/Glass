@@ -22,6 +22,7 @@
 // Windows headers
 #include <windows.h>
 #include <iostream>
+#include <map>
 #include <fstream>
 #include <sstream>
 #include <string>

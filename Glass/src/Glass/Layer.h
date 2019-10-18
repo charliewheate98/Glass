@@ -12,7 +12,7 @@ namespace Glass
 		std::string name;
 		uint32_t ZIndex;
 
-		std::unique_ptr<Renderer> LayerRenderer;
+		MasterRenderer LayerRenderer;
 	public:
 		Layer();
 		virtual ~Layer() {}

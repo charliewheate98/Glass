@@ -140,11 +140,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Glass\MasterRenderer.h" />
+    <ClInclude Include="src\Glass\IndexBuffer.h" />
+    <ClInclude Include="src\Glass\Mesh.h" />
+    <ClInclude Include="src\Glass\OpenGLContext.h" />
     <ClInclude Include="src\Glass\OpenGLTexture.h" />
     <ClInclude Include="src\Glass\Input.h" />
     <ClInclude Include="src\Glass\OrthographicCamera.h" />
     <ClInclude Include="src\Glass\Object.h" />
-    <ClInclude Include="src\Glass\Shader.h" />
+    <ClInclude Include="src\Glass\OpenGLShader.h" />
     <ClInclude Include="src\Glass\Renderer.h" />
     <ClInclude Include="src\Glass\Layer.h" />
     <ClInclude Include="src\Glass\Application.h" />
@@ -155,15 +159,27 @@
     <ClInclude Include="src\Glass\pch.h" />
     <ClInclude Include="src\Glass\stb_image.h" />
     <ClInclude Include="src\Glass\Vertex.h" />
+    <ClInclude Include="src\Glass\Texture.h" />
+    <ClInclude Include="src\Glass\Timestep.h" />
+    <ClInclude Include="src\Glass\VertexArray.h" />
+    <ClInclude Include="src\Glass\VertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Glass\MasterRenderer.cpp" />
+    <ClCompile Include="src\Glass\IndexBuffer.cpp" />
+    <ClCompile Include="src\Glass\Mesh.cpp" />
+    <ClCompile Include="src\Glass\OpenGLContext.cpp" />
     <ClCompile Include="src\Glass\OpenGLTexture.cpp" />
     <ClCompile Include="src\Glass\OrthographicCamera.cpp" />
     <ClCompile Include="src\Glass\Application.cpp" />
-    <ClCompile Include="src\Glass\Shader.cpp" />
+    <ClCompile Include="src\Glass\OpenGLShader.cpp" />
     <ClCompile Include="src\Glass\Renderer.cpp" />
     <ClCompile Include="src\Glass\Layer.cpp" />
     <ClCompile Include="src\Glass\Logger.cpp" />
+    <ClCompile Include="src\Glass\Texture.cpp" />
+    <ClCompile Include="src\Glass\Timestep.cpp" />
+    <ClCompile Include="src\Glass\VertexArray.cpp" />
+    <ClCompile Include="src\Glass\VertexBuffer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
