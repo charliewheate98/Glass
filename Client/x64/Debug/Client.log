@@ -1,10 +1,18 @@
-﻿  SceneLayer.cpp
-C:\Dev\Glass\Glass\src\Glass\Object.h(12,24): warning C4251: 'Glass::Object::m_Transform': struct 'glm::tmat4x4<float,0>' needs to have dll-interface to be used by clients of class 'Glass::Object'
-C:\Users\Owner\Desktop\Octagram\libs\glm\glm\detail\type_mat.hpp(304): message : see declaration of 'glm::tmat4x4<float,0>'
-C:\Dev\Glass\Glass\src\Glass\Object.h(14,23): warning C4251: 'Glass::Object::m_Position': struct 'glm::tvec3<float,0>' needs to have dll-interface to be used by clients of class 'Glass::Object'
-C:\Users\Owner\Desktop\Octagram\libs\glm\glm\detail\type_vec.hpp(243): message : see declaration of 'glm::tvec3<float,0>'
-C:\Dev\Glass\Glass\src\Glass\Object.h(15,44): warning C4251: 'Glass::Object::m_Scale': struct 'glm::tvec3<float,0>' needs to have dll-interface to be used by clients of class 'Glass::Object'
-C:\Users\Owner\Desktop\Octagram\libs\glm\glm\detail\type_vec.hpp(243): message : see declaration of 'glm::tvec3<float,0>'
-C:\Dev\Glass\Glass\src\Glass\Mesh.h(20,42): warning C4251: 'Glass::Mesh::m_Texture': class 'std::shared_ptr<Glass::Texture2D>' needs to have dll-interface to be used by clients of class 'Glass::Mesh'
-C:\Dev\Glass\Glass\src\Glass\Core.h(46): message : see declaration of 'std::shared_ptr<Glass::Texture2D>'
+﻿  EditorApplication.cpp
+C:\Dev\Glass\Glass\src\Glass\Renderer.h(33,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Dev\Glass\Glass\src\Glass\Renderer.h(34,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Dev\Glass\Glass\src\Glass\Renderer.h(54,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  Main.cpp
+C:\Dev\Glass\Glass\src\Glass\Renderer.h(55,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Dev\Glass\Glass\src\Glass\Renderer.h(33,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Dev\Glass\Glass\src\Glass\Renderer.h(34,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Dev\Glass\Glass\src\Glass\Renderer.h(54,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  SceneLayer.cpp
+C:\Dev\Glass\Glass\src\Glass\Renderer.h(55,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Dev\Glass\Glass\src\Glass\Renderer.h(33,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Dev\Glass\Glass\src\Glass\Renderer.h(34,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Dev\Glass\Glass\src\Glass\Renderer.h(54,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  Generating Code...
+C:\Dev\Glass\Glass\src\Glass\Renderer.h(55,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Client.vcxproj -> C:\Dev\Glass\x64\Debug\Client.exe

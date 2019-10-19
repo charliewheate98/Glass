@@ -11,7 +11,7 @@ namespace Glass
 		VertexArray();
 		~VertexArray();
 
-		inline GLuint& GetVertexArray() { return m_VertexArray; }
+		GLuint& GetVertexArray() { return m_VertexArray; }
 
 		void BindVertexArray();
 	private:

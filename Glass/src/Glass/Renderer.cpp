@@ -1,6 +1,7 @@
 #include "Renderer.h"
-
-#define MAX_SPRITES 1000
+#include "VertexArray.h"
+#include "VertexBuffer.h"
+#include "IndexBuffer.h"
 
 namespace Glass
 {
@@ -22,8 +23,7 @@ namespace Glass
 		m_SceneData.ViewProjectionMatrix = camera.GetViewProjectionMatrix();
 	}
 
-	void Renderer::End()
-	{}
+	void Renderer::End(){}
 
 	void Renderer::Submit(const std::shared_ptr<Object>& obj, const std::shared_ptr<Glass::OpenGLShader>& shader)
 	{

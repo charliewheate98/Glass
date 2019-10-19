@@ -12,8 +12,6 @@ namespace Glass
 	{
 		m_Position = position;
 
-		m_Texture = Texture2D::Create("Content/Default.png");
-
 		Vertex vertices[] =
 		{
 			Vertex(glm::vec3(0.5f,  0.5f, 0.0f), glm::vec2(1.0f, 1.0f)),
@@ -32,7 +30,7 @@ namespace Glass
 
 		m_VertexArray->BindVertexArray();
 
-		m_VertexBuffer = new Glass::VertexBuffer(5 * sizeof(Vertex), vertices, GL_STATIC_DRAW);
+		m_VertexBuffer = new Glass::VertexBuffer(sizeof(vertices), vertices, GL_STATIC_DRAW);
 		m_IndexBuffer = new Glass::IndexBuffer(sizeof(indices), indices, GL_STATIC_DRAW);
 
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
@@ -43,9 +41,19 @@ namespace Glass
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindVertexArray(0);
 
+		m_VertexCount += 6;
 	}
 
-	Mesh::~Mesh() {}
+	Mesh::~Mesh() 
+	{
+		m_VertexArray = nullptr;
+		m_VertexBuffer = nullptr;
+		m_IndexBuffer = nullptr;
+
+		delete m_VertexArray;
+		delete m_VertexBuffer;
+		delete m_IndexBuffer;
+	}
 
 	void Mesh::Tick(float DeltaTime) {}
 
@@ -53,7 +61,6 @@ namespace Glass
 	{
 		SetTransformationMatrix();
 
-		m_Texture->Bind(0);
 		m_VertexArray->BindVertexArray();
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
 	}

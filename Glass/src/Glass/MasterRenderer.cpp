@@ -1,59 +1,62 @@
 #include "MasterRenderer.h"
+#include "Logger.h"
 
 namespace Glass
 {
-	void MasterRenderer::Init()
+	void MasterRenderer::Init(std::shared_ptr<Glass::OpenGLShader>& shader)
 	{
-		glGenVertexArrays(1, &m_Vao);
-		glBindVertexArray(m_Vao);
+		m_Shader = shader;
 
-		glGenBuffers(GL_ARRAY_BUFFER, &m_Vbo);
-		glBindBuffer(GL_ARRAY_BUFFER, m_Vbo);
-		glBufferData(GL_ARRAY_BUFFER, RENDERER_BUFFER_SIZE, 0, GL_DYNAMIC_DRAW);
-		glEnableVertexAttribArray(SHADER_POSITION_ATTRIB);
-		glEnableVertexAttribArray(SHADER_UV_ATTRIB);
-		glVertexAttribPointer(SHADER_POSITION_ATTRIB, 3, GL_FLOAT, GL_FALSE, RENDERER_VERTICES_SIZE, 0);
-		glVertexAttribPointer(SHADER_UV_ATTRIB, 2, GL_FLOAT, GL_FALSE, RENDERER_VERTICES_SIZE, (void*)(3 * sizeof(GLfloat)));
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		
-		uint8_t offset = 0;
-		GLuint indices[RENDERER_MAX_INDICES];
+		m_Texture = Texture2D::Create("Content/Default.png");
 
-		/*for (unsigned int i = 0; i < RENDERER_MAX_INDICES; i += 6)
+		m_SceneData.loc_view = shader->LoadUniform("m_ViewProjection");
+		m_SceneData.loc_Transform = shader->LoadUniform("m_Transform");
+		m_SceneData.loc_Diffuse = shader->LoadUniform("m_Diffuse");
+	}
+
+	void MasterRenderer::ProcessMesh(std::shared_ptr<Mesh> obj, glm::mat4 transform)
+	{
+		if(!m_MeshRenderBuffer.empty())
+			m_MeshRenderBuffer[obj].push_back(transform);
+		else
 		{
-			indices[  i  ] = offset + 0;
-			indices[i + 1] = offset + 1;
-			indices[i + 2] = offset + 2;
-
-			indices[i + 3] = offset + 2;
-			indices[i + 4] = offset + 3;
-			indices[i + 5] = offset + 0;
-
-			offset += 4;
-
-			std::cout << indices[i] << std::endl;
+			std::vector<glm::mat4> newTransforms;
+			newTransforms.push_back(transform);
+			m_MeshRenderBuffer.insert({ obj, newTransforms });
 		}
-
-		glGenBuffers(1, &m_Ibo);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_Ibo);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, RENDERER_MAX_INDICES, indices, GL_STATIC_DRAW);
-
-		glBindVertexArray(0);*/
 	}
 
-	void MasterRenderer::Begin()
+	void MasterRenderer::Begin(OrthographicCamera& camera)
 	{
-	}
+		glClear(GL_COLOR_BUFFER_BIT);
 
-	void MasterRenderer::Submit(const Object& obj)
-	{
-	}
-
-	void MasterRenderer::End()
-	{
+		m_SceneData.ViewProjectionMatrix = camera.GetViewProjectionMatrix();
 	}
 
 	void MasterRenderer::Flush()
 	{
+		m_Shader->Bind();
+
+		m_Shader->SetMatrix4(m_SceneData.loc_view, m_SceneData.ViewProjectionMatrix);
+
+		for (std::map<std::shared_ptr<Mesh>, std::vector<glm::mat4>>::iterator it = m_MeshRenderBuffer.begin();
+				it != m_MeshRenderBuffer.end(); ++it)
+		{
+			std::shared_ptr<Mesh> object = it->first;
+			glm::mat4* transforms = &it->second[0];
+			size_t numTransforms = it->second.size();
+
+			if (numTransforms == 0)
+				continue;
+
+			m_Shader->SetInt(m_SceneData.loc_Diffuse, 0);
+			m_Shader->SetMatrix4(m_SceneData.loc_Transform, transforms[it->second.size() - 1]);
+
+			glBindVertexArray(object->GetVAO().GetVertexArray());
+	
+			m_Texture->Bind(0);
+
+			glDrawElementsInstanced(GL_TRIANGLES, object->GetVertexCount(), GL_UNSIGNED_INT, 0, numTransforms);
+		}
 	}
 }

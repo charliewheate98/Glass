@@ -38,15 +38,13 @@ EditorApplication::EditorApplication(const char* title)
 	glViewport(0, 0, GET_WINDOW_WIDTH, GET_WINDOW_HEIGHT);
 	glClearColor(0.25f, 0.25f, 0.25f, 1.f);
 
-	//ImGui::CreateContext();
-	//ImGui::StyleColorsDark();
-	//ImGui_ImplGlfw_InitForOpenGL(window, true);
-	//ImGui_ImplOpenGL3_Init(GLSL_VERSION);
-
-	m_SceneLayer = std::make_shared<SceneLayer>();
+	m_SceneLayer = std::make_unique<SceneLayer>();
 }
 
-EditorApplication::~EditorApplication() {}
+EditorApplication::~EditorApplication() 
+{
+	m_DeltaTime = 0.f;
+}
 
 void EditorApplication::Tick(Glass::Timestep ts)
 {
@@ -56,9 +54,6 @@ void EditorApplication::Tick(Glass::Timestep ts)
 void EditorApplication::Render()
 {
 	m_SceneLayer->Render();
-
-	//ImGui::Render();
-	//ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
 void EditorApplication::MainLoop()
@@ -75,19 +70,6 @@ void EditorApplication::MainLoop()
 		Glass::Timestep timestep = currentTime - previousTime;
 		previousTime = currentTime;
 
-		// Start the ImGui frame
-		//ImGui_ImplOpenGL3_NewFrame();
-		//ImGui_ImplGlfw_NewFrame();
-		//ImGui::NewFrame();
-
-		//ImGui::Begin("Transform");
-		//ImGui::End();
-
-		#ifdef _DEBUG
-				LOG_INFO("Seconds: {0}", timestep.GetSeconds());
-				LOG_INFO("Milliseconds: {0}", timestep.GetMilliseconds());
-		#endif
-
 		Tick(timestep);
 		Render();
 
@@ -95,10 +77,6 @@ void EditorApplication::MainLoop()
 		glfwSwapBuffers(window);
 	}
 
-	// Cleanup
-	//ImGui_ImplOpenGL3_Shutdown();
-	//ImGui_ImplGlfw_Shutdown();
-	//ImGui::DestroyContext();
 	glfwDestroyWindow(window);
 	glfwTerminate();
 }

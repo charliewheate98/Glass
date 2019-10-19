@@ -19,7 +19,7 @@
 class EditorApplication : public Glass::Application
 {
 private:
-	std::shared_ptr<Glass::Layer> m_SceneLayer;
+	std::unique_ptr<Glass::Layer> m_SceneLayer;
 	std::unique_ptr<Glass::OpenGLContext> GLContext;
 
 	float m_DeltaTime;

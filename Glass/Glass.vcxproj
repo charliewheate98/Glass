@@ -140,6 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Glass\InstanceRenderer.h" />
     <ClInclude Include="src\Glass\MasterRenderer.h" />
     <ClInclude Include="src\Glass\IndexBuffer.h" />
     <ClInclude Include="src\Glass\Mesh.h" />
@@ -165,6 +166,7 @@
     <ClInclude Include="src\Glass\VertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Glass\InstanceRenderer.cpp" />
     <ClCompile Include="src\Glass\MasterRenderer.cpp" />
     <ClCompile Include="src\Glass\IndexBuffer.cpp" />
     <ClCompile Include="src\Glass\Mesh.cpp" />
