@@ -22,7 +22,7 @@ namespace Glass
 			glClear(GL_COLOR_BUFFER_BIT);
 		}
 
-		static void DrawArrays(VertexArray& vertexArray, const size_t indexCount, GLsizei numInstances = 1)
+		static void DrawArrays(VertexArray& vertexArray, const GLsizei indexCount, GLsizei numInstances = 1)
 		{
 			if (indexCount >= 6)
 			{
@@ -43,7 +43,7 @@ namespace Glass
 				LOG_ERROR("[ARRAY DRAW CALL] Not Enough Indices to Draw");
 		}
 
-		static void DrawIndexed(VertexArray& vertexArray, const size_t indexCount, GLsizei numInstances = 1)
+		static void DrawIndexed(VertexArray& vertexArray, const GLsizei indexCount, GLsizei numInstances = 1)
 		{
 			if (indexCount >= 6)
 			{

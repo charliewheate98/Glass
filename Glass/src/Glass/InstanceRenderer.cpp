@@ -1,30 +1,33 @@
 #include "InstanceRenderer.h"
-#include "VertexArray.h"
-#include "VertexBuffer.h"
-#include "IndexBuffer.h"
-
-unsigned int instanceBuffer;
+#include "OpenGLTexture.h"
 
 namespace Glass
 {
+	SharedScope<Texture2D> m_Texture;
+
 	void InstanceRenderer::Init(std::shared_ptr<Glass::OpenGLShader>& shader)
 	{
 		m_Shader = shader;
 
 		RendererCommands::Init();
 
+		m_Texture = Glass::Texture2D::Create("Content/Default.png");
+
 		m_SceneData.loc_view = m_Shader->LoadUniform("m_ViewProjection");
 		m_SceneData.loc_Transform = m_Shader->LoadUniform("m_Transform");
+		m_SceneData.loc_Diffuse = m_Shader->LoadUniform("m_Diffuse");
 	}
 
-	void InstanceRenderer::Process(const std::shared_ptr<Object>& obj, std::vector<glm::mat4> &transforms) 
+	void InstanceRenderer::Process(const std::shared_ptr<Object>& obj, std::vector<Glass::Transform*> transforms)
 	{
-		m_Transforms = transforms;
+		for (unsigned int i = 0; i < transforms.size(); i++)
+			m_Transforms.push_back(transforms[i]->GetCoreMatrix());
 
-		VertexBuffer m_Buffer(transforms.size() * sizeof(glm::mat4), &transforms[0], GL_STATIC_DRAW);
+		VertexBuffer m_Buffer(transforms.size() * sizeof(glm::mat4), &m_Transforms[0], GL_STATIC_DRAW);
 
 		std::dynamic_pointer_cast<Mesh>(obj)->GetVAO().BindVertexArray();
 
+		// set up the matrix 4 attribute
 		glEnableVertexAttribArray(2);
 		glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)0);
 
@@ -63,7 +66,10 @@ namespace Glass
 	{
 		shader->Bind();
 
+		shader->SetInt(m_SceneData.loc_Diffuse, 0);
 		shader->SetMatrix4(m_SceneData.loc_view, m_SceneData.ViewProjectionMatrix);
+
+		m_Texture->Bind(0);
 
 		RendererCommands::DrawIndexed(std::dynamic_pointer_cast<Mesh>(obj)->GetVAO(), 6, m_Transforms.size());
 	}
@@ -71,6 +77,5 @@ namespace Glass
 	void InstanceRenderer::Destroy()
 	{
 		m_Transforms.clear();
-
 	}
 }

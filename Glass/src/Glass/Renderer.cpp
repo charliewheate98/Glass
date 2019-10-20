@@ -27,8 +27,6 @@ namespace Glass
 
 	void Renderer::Submit(const std::shared_ptr<Object>& obj, const std::shared_ptr<Glass::OpenGLShader>& shader)
 	{
-		shader->Bind();
-
 		shader->SetInt(m_SceneData.loc_Diffuse, 0);
 		shader->SetMatrix4(m_SceneData.loc_view, m_SceneData.ViewProjectionMatrix);
 		shader->SetMatrix4(m_SceneData.loc_Transform, obj->GetTransform());

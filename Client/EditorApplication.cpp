@@ -36,7 +36,7 @@ EditorApplication::EditorApplication(const char* title)
 	GLContext = std::make_unique<Glass::OpenGLContext>();
 
 	glViewport(0, 0, GET_WINDOW_WIDTH, GET_WINDOW_HEIGHT);
-	glClearColor(0.25f, 0.25f, 0.25f, 1.f);
+	glClearColor(0.01f, 0.01f, 0.01f, 1.f);
 
 	m_SceneLayer = std::make_unique<SceneLayer>();
 }
@@ -60,6 +60,8 @@ void EditorApplication::MainLoop()
 {
 	float previousTime = (float)glfwGetTime();
 
+	int frames = 0;
+
 	GLContext->PrintDeviceInfo();
 
 	while (!glfwWindowShouldClose(window))
@@ -69,6 +71,11 @@ void EditorApplication::MainLoop()
 		float currentTime = (float)glfwGetTime();
 		Glass::Timestep timestep = currentTime - previousTime;
 		previousTime = currentTime;
+
+		#ifdef _DEBUG
+				LOG_TRACE("MS: {0}", timestep.GetMilliseconds());
+				LOG_TRACE("SC: {0}", timestep.GetSeconds());
+		#endif
 
 		Tick(timestep);
 		Render();
