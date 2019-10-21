@@ -17,9 +17,8 @@ SceneLayer::SceneLayer()
 	m_OrthographicCamera = std::make_unique<Glass::OrthographicCamera>(0.0f, 1920.f, 1080.f, 0.0f);
 	m_OrthographicCameraController = std::make_unique<OrthographicCameraController>();
 
-	m_Futures.push_back(std::async(Glass::World::PushShader, std::make_shared<Glass::OpenGLShader>("Content/Shaders/basic.vs", "Content/Shaders/basic.fs"), "Basic"));
-
-	m_Meshes.push_back(std::make_shared<Glass::Mesh>(glm::vec3(1920.0f / 2, 1080.f / 2, 0.f)));
+	m_Futures.push_back(std::async(std::launch::async, Glass::World::PushShader, std::make_shared<Glass::OpenGLShader>("Content/Shaders/basic.vs", "Content/Shaders/basic.fs"), "Basic"));
+	m_Futures.push_back(std::async(std::launch::async, Glass::World::PushObject, std::make_shared<Glass::Mesh>(glm::vec3(1920.0f / 2, 1080.f / 2, 0.f))));
 
 	// 50,000 sprites to test the InstanceRenderer 
 	for (unsigned int i = 0; i < 1; i++)
@@ -29,8 +28,8 @@ SceneLayer::SceneLayer()
 	}
 
 	// Initialise the renderer
-	LayerRenderer.Init(Glass::World::GetShaderQueue().front());
-	LayerRenderer.Process(m_Meshes[0], transforms);
+	LayerRenderer.Init(Glass::World::GetShaderList()[0]);
+	LayerRenderer.Process(Glass::World::GetObjectList()[0], transforms);
 }
 
 SceneLayer::~SceneLayer()
@@ -46,6 +45,6 @@ void SceneLayer::Update(float DeltaTime)
 void SceneLayer::Render()
 {
 	LayerRenderer.Begin(*m_OrthographicCamera);
-	LayerRenderer.Submit(m_Meshes[0], Glass::World::GetShaderQueue().front());
+	LayerRenderer.Submit(Glass::World::GetObjectList()[0], Glass::World::GetShaderList()[0]);
 	LayerRenderer.End();
 }

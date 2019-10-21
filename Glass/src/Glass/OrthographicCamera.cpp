@@ -15,7 +15,7 @@ namespace Glass
 
 	void OrthographicCamera::SetProjectionMatrix(float left, float right, float bottom, float top)
 	{
-		m_ProjectionMatrix = glm::ortho(left, right, bottom, top, 0.1f, 100.f);
+		m_ProjectionMatrix = glm::ortho(left, right, bottom, top, -1.0f, 1.0f);
 		m_ViewProjectionMatrix = m_ViewMatrix * m_ProjectionMatrix;
 	}
 
