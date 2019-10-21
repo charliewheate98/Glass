@@ -31,5 +31,7 @@
 #include <stdio.h>
 #include <memory>
 #include <vector>
+#include <future>
+#include <queue>
 
 #endif //PCH_H

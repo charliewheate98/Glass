@@ -4,6 +4,7 @@
 #include "OrthographicCameraController.h"
 #include "Glass/OpenGLShader.h"
 #include "Glass/Layer.h"
+#include "Glass/World.h"
 
 class SceneLayer : public Glass::Layer
 {

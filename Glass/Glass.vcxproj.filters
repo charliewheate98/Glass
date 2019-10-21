@@ -57,9 +57,6 @@
     <ClInclude Include="src\Glass\IndexBuffer.h">
       <Filter>Header Files\Wrapper Classes</Filter>
     </ClInclude>
-    <ClInclude Include="src\Glass\OpenGLContext.h">
-      <Filter>Header Files\Wrapper Classes</Filter>
-    </ClInclude>
     <ClInclude Include="src\Glass\Timestep.h">
       <Filter>Header Files\Wrapper Classes</Filter>
     </ClInclude>
@@ -117,6 +114,15 @@
     <ClInclude Include="src\Glass\Transform.h">
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="src\Glass\OpenGLContext.h">
+      <Filter>Header Files\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glass\VulkanContext.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glass\World.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Glass\OpenGLTexture.cpp">
@@ -126,9 +132,6 @@
       <Filter>Source Files\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\IndexBuffer.cpp">
-      <Filter>Source Files\Wrapper Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Glass\OpenGLContext.cpp">
       <Filter>Source Files\Wrapper Classes</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\Timestep.cpp">
@@ -163,6 +166,15 @@
     </ClCompile>
     <ClCompile Include="src\Glass\OrthographicCamera.cpp">
       <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Glass\OpenGLContext.cpp">
+      <Filter>Source Files\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Glass\VulkanContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Glass\World.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
