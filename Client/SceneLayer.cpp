@@ -1,9 +1,9 @@
 #include "SceneLayer.h"
+#include "Glass/EntityMesh.h"
 #include "Glass/Renderer.h"
 #include "Glass/Input.h"
 
 std::vector<std::future<void>> m_Futures;
-
 std::vector<Glass::Transform*> transforms;
 
 SceneLayer::SceneLayer() 
@@ -17,19 +17,21 @@ SceneLayer::SceneLayer()
 	m_OrthographicCamera = std::make_unique<Glass::OrthographicCamera>(0.0f, 1920.f, 1080.f, 0.0f);
 	m_OrthographicCameraController = std::make_unique<OrthographicCameraController>();
 
+	// Load in the shader and Add a Entity positioned within the center of the screen
+	// Seperate Thread ------------
 	m_Futures.push_back(std::async(std::launch::async, Glass::World::PushShader, std::make_shared<Glass::OpenGLShader>("Content/Shaders/basic.vs", "Content/Shaders/basic.fs"), "Basic"));
-	m_Futures.push_back(std::async(std::launch::async, Glass::World::PushObject, std::make_shared<Glass::Mesh>(glm::vec3(1920.0f / 2, 1080.f / 2, 0.f))));
+	m_Futures.push_back(std::async(std::launch::async, Glass::World::PushObject, std::make_shared<Glass::EntityMesh>(glm::vec3(1920.0f / 2, 1080.f / 2, 0.f), 0)));
+	// ----------------------------
 
-	// 50,000 sprites to test the InstanceRenderer 
-	for (unsigned int i = 0; i < 1; i++)
-	{	
-		transforms.push_back(new Glass::Transform(glm::vec3(1920.f / 2 + i * 1024.f, 1080.f / 2, 0.0f), glm::vec3(512.f, 512.f, 0.0f)));
-		transforms[i]->RecalculateTransformationMatrix();
-	}
+	// Load in texture for object at index 0 in the ObjectList
+	SMART_CAST(Glass::EntityMesh,		 Glass::World::GetObjectList()[0])->GetTexture() = Glass::Texture2D::Create("Content/Default.png");
+	SMART_CAST(Glass::OpenGLTexture,	 std::dynamic_pointer_cast<Glass::EntityMesh>(Glass::World::GetObjectList()[0])->GetTexture())->SetNumberOfRows(1);
+
+	// Push Textures into the library
+	Glass::TextureLibrary::Add("Default", SMART_CAST(Glass::EntityMesh, Glass::World::GetObjectList()[0])->GetTexture());
 
 	// Initialise the renderer
 	LayerRenderer.Init(Glass::World::GetShaderList()[0]);
-	LayerRenderer.Process(Glass::World::GetObjectList()[0], transforms);
 }
 
 SceneLayer::~SceneLayer()
@@ -45,6 +47,9 @@ void SceneLayer::Update(float DeltaTime)
 void SceneLayer::Render()
 {
 	LayerRenderer.Begin(*m_OrthographicCamera);
-	LayerRenderer.Submit(Glass::World::GetObjectList()[0], Glass::World::GetShaderList()[0]);
+	{
+		Glass::TextureLibrary::GetByName("Default")->Bind(0);
+		LayerRenderer.Submit(Glass::World::GetObjectList()[0], Glass::World::GetShaderList()[0]);
+	}
 	LayerRenderer.End();
 }

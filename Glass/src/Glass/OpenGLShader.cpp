@@ -75,9 +75,19 @@ namespace Glass
 		glUniform1i(loc, val);
 	}
 
+	void OpenGLShader::SetFloat(GLint loc, float val) const
+	{
+		glUniform1f(loc, val);
+	}
+
 	void OpenGLShader::SetBool(GLint loc, bool val) const
 	{
 		SetInt(loc, val);
+	}
+
+	void OpenGLShader::SetVector2(GLint loc, glm::vec2 vec) const
+	{
+		glUniform2f(loc, vec.x, vec.y);
 	}
 
 	void OpenGLShader::SetVector3(GLint loc, glm::vec3 &vec) const

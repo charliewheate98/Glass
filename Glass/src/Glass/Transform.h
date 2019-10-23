@@ -5,6 +5,8 @@
 #include <glm.hpp>
 #include <gtc/matrix_transform.hpp>
 
+#pragma warning(disable:4251)
+
 namespace Glass
 {
 	class GLASS_API Transform
@@ -37,6 +39,11 @@ namespace Glass
 		operator glm::mat4() const
 		{
 			return m_Model;
+		}
+
+		operator glm::vec3() const
+		{
+			return m_Position;
 		}
 
 		glm::mat4& GetCoreMatrix() { return m_Model; }

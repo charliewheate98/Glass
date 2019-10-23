@@ -3,6 +3,10 @@
 // Lib Classes
 #include <GL/glew.h>
 
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+
 // Editor Classes
 #include "Glass/Mesh.h"
 
@@ -20,6 +24,11 @@ class EditorApplication : public Glass::Application
 {
 private:
 	std::unique_ptr<Glass::Layer> m_SceneLayer;
+
+	// has to be shared to be dynamically casted
+	std::shared_ptr<Glass::Layer> m_GuiLayer;
+
+	// The API context
 	std::unique_ptr<Glass::OpenGLContext> GLContext;
 
 	float m_DeltaTime;

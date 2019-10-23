@@ -14,6 +14,12 @@
 
 #pragma endregion
 
+/*
+* Param 1: Casted To  
+* Param 2: From 
+*/
+#define SMART_CAST(CastTo, Obj) std::dynamic_pointer_cast<CastTo>(Obj)
+
 #pragma region GLS_RENDERING
 
 	#define gls_GEN_VERTEX_ARRAY(size, buffer) glGenVertexArrays(size, &buffer)

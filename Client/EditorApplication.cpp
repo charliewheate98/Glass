@@ -1,5 +1,6 @@
 #include "EditorApplication.h"
 #include "SceneLayer.h"
+#include "ImGuiLayer.h"
 #include "Glass/Timestep.h"
 
 void GetFramebufferSize(GLFWwindow * window, int width, int height)
@@ -24,21 +25,14 @@ EditorApplication::EditorApplication(const char* title)
 
 	glfwMakeContextCurrent(window);
 	glfwSetFramebufferSizeCallback(window, GetFramebufferSize);
-	glfwSwapInterval(1);
-
-	GLenum glewStatus = glewInit();
-	if (glewStatus != GLEW_OK)
-	{
-		LOG_ERROR("Unable To Initialise Glew!");
-		return;
-	}
+	glfwSwapInterval(1); 
 
 	GLContext = std::make_unique<Glass::OpenGLContext>();
 
 	glViewport(0, 0, GET_WINDOW_WIDTH, GET_WINDOW_HEIGHT);
-	glClearColor(0.01f, 0.01f, 0.01f, 1.f);
 
 	m_SceneLayer = std::make_unique<SceneLayer>();
+	m_GuiLayer = std::make_shared<ImGuiLayer>(window, CLASSIC);
 }
 
 EditorApplication::~EditorApplication() 
@@ -54,28 +48,30 @@ void EditorApplication::Tick(Glass::Timestep ts)
 void EditorApplication::Render()
 {
 	m_SceneLayer->Render();
+
+	std::dynamic_pointer_cast<ImGuiLayer>(m_GuiLayer)->Render();
 }
+
+std::vector<std::string> menu_items;
 
 void EditorApplication::MainLoop()
 {
 	float previousTime = (float)glfwGetTime();
 
-	int frames = 0;
-
 	GLContext->PrintDeviceInfo();
+
+	bool my_tool_active = true;
 
 	while (!glfwWindowShouldClose(window))
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
+		glClearColor(0.1f, 0.1f, 0.1f, 1.f);
+
+		std::dynamic_pointer_cast<ImGuiLayer>(m_GuiLayer)->CreateFrame();
 
 		float currentTime = (float)glfwGetTime();
 		Glass::Timestep timestep = currentTime - previousTime;
 		previousTime = currentTime;
-
-		#ifdef _DEBUG
-				LOG_TRACE("MS: {0}", timestep.GetMilliseconds());
-				LOG_TRACE("SC: {0}", timestep.GetSeconds());
-		#endif
 
 		Tick(timestep);
 		Render();

@@ -1,6 +1,6 @@
 ﻿  EditorApplication.cpp
+  ImGuiLayer.cpp
   Main.cpp
-  OrthographicCameraController.cpp
   SceneLayer.cpp
   Generating Code...
   Client.vcxproj -> C:\Dev\Glass\x64\Debug\Client.exe

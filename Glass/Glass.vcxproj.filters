@@ -43,6 +43,12 @@
     <Filter Include="Header Files\Utils">
       <UniqueIdentifier>{9a63badc-6297-42e1-a25f-e1d833133555}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Vulkan">
+      <UniqueIdentifier>{17c8d30f-314e-47fd-90a5-0687c931dd11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Vulkan">
+      <UniqueIdentifier>{431950b7-fda9-46e5-abde-3d2ab0e91a48}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Glass\stb_image.h">
@@ -118,9 +124,12 @@
       <Filter>Header Files\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\VulkanContext.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Vulkan</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\World.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glass\EntityMesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -171,9 +180,12 @@
       <Filter>Source Files\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\VulkanContext.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Vulkan</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\World.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Glass\EntityMesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,9 +1,11 @@
 #include "InstanceRenderer.h"
+#include "EntityMesh.h"
 #include "OpenGLTexture.h"
 
 namespace Glass
 {
-	SharedScope<Texture2D> m_Texture;
+	GLuint loc_inumRows;
+	GLuint loc_ioffset;
 
 	void InstanceRenderer::Init(std::shared_ptr<Glass::OpenGLShader>& shader)
 	{
@@ -11,11 +13,12 @@ namespace Glass
 
 		RendererCommands::Init();
 
-		m_Texture = Glass::Texture2D::Create("Content/Default.png");
-
 		m_SceneData.loc_view = m_Shader->LoadUniform("m_ViewProjection");
 		m_SceneData.loc_Transform = m_Shader->LoadUniform("m_Transform");
 		m_SceneData.loc_Diffuse = m_Shader->LoadUniform("m_Diffuse");
+
+		loc_inumRows = m_Shader->LoadUniform("m_NumberOfRows");
+		loc_ioffset = m_Shader->LoadUniform("m_Offset");
 	}
 
 	void InstanceRenderer::Process(const std::shared_ptr<Object>& obj, std::vector<Glass::Transform*> transforms)
@@ -23,7 +26,7 @@ namespace Glass
 		for (unsigned int i = 0; i < transforms.size(); i++)
 			m_Transforms.push_back(transforms[i]->GetCoreMatrix());
 
-		VertexBuffer m_Buffer(transforms.size() * sizeof(glm::mat4), &m_Transforms[0], GL_STATIC_DRAW);
+		VertexBuffer m_Buffer((GLsizei)transforms.size() * sizeof(glm::mat4), &m_Transforms[0], GL_STATIC_DRAW);
 
 		std::dynamic_pointer_cast<Mesh>(obj)->GetVAO().BindVertexArray();
 
@@ -64,14 +67,18 @@ namespace Glass
 
 	void InstanceRenderer::Submit(const std::shared_ptr<Object>& obj, const std::shared_ptr<Glass::OpenGLShader>& shader)
 	{
+		static auto& NumberOfRows  = SMART_CAST(OpenGLTexture, std::dynamic_pointer_cast<EntityMesh>(obj)->GetTexture())->GetNumberOfRows();
+		static auto  xOffset       = SMART_CAST(EntityMesh, obj)->GetTextureXOffset();
+		static auto  yOffset       = SMART_CAST(EntityMesh, obj)->GetTextureYOffset();
+
 		shader->Bind();
 
-		shader->SetInt(m_SceneData.loc_Diffuse, 0);
-		shader->SetMatrix4(m_SceneData.loc_view, m_SceneData.ViewProjectionMatrix);
+		shader->SetInt      (m_SceneData.loc_Diffuse,    0);
+		shader->SetMatrix4  (m_SceneData.loc_view,       m_SceneData.ViewProjectionMatrix);
+		shader->SetFloat    (loc_inumRows,               NumberOfRows);
+		shader->SetVector2  (loc_ioffset,		         glm::vec2(xOffset, yOffset));
 
-		m_Texture->Bind(0);
-
-		RendererCommands::DrawIndexed(std::dynamic_pointer_cast<Mesh>(obj)->GetVAO(), 6, m_Transforms.size());
+		RendererCommands::DrawIndexed(std::dynamic_pointer_cast<EntityMesh>(obj)->GetVAO(), 6, (GLsizei)m_Transforms.size());
 	}
 
 	void InstanceRenderer::Destroy()

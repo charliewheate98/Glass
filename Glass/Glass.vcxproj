@@ -144,6 +144,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Glass\EntityMesh.h" />
     <ClInclude Include="src\Glass\InstanceRenderer.h" />
     <ClInclude Include="src\Glass\IndexBuffer.h" />
     <ClInclude Include="src\Glass\Mesh.h" />
@@ -172,6 +173,7 @@
     <ClInclude Include="src\Glass\World.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Glass\EntityMesh.cpp" />
     <ClCompile Include="src\Glass\InstanceRenderer.cpp" />
     <ClCompile Include="src\Glass\IndexBuffer.cpp" />
     <ClCompile Include="src\Glass\Mesh.cpp" />

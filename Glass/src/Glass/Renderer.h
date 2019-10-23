@@ -87,7 +87,7 @@ namespace Glass
 		virtual void End();
 		virtual void Submit(const std::shared_ptr<Object>& obj, const std::shared_ptr<Glass::OpenGLShader>& shader);
 
-		virtual void Destroy() = 0;
+		virtual void Destroy() {}
 	};
 }
 

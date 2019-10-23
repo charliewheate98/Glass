@@ -29,7 +29,9 @@ namespace Glass
 		GLuint LoadUniform(const std::string& name);
 
 		void SetInt(GLint loc, int val) const;
+		void SetFloat(GLint loc, float val) const;
 		void SetBool(GLint loc, bool val) const;
+		void SetVector2(GLint loc, glm::vec2 vec) const;
 		void SetVector3(GLint loc, glm::vec3 &vec) const;
 		void SetMatrix4(GLint loc, glm::mat4 mat) const;
 		 

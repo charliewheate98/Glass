@@ -8,9 +8,10 @@ GLuint VBO, VAO, EBO;
 
 namespace Glass
 {
-	Mesh::Mesh(glm::vec3 position)
+	Mesh::Mesh(glm::vec3 position, int texture_index) 
 	{
 		m_Position = position;
+		m_TextureIndex = texture_index;
 
 		Vertex vertices[] =
 		{
