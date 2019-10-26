@@ -14,11 +14,33 @@
 
 #pragma endregion
 
-/*
-* Param 1: Casted To  
-* Param 2: From 
-*/
-#define SMART_CAST(CastTo, Obj) std::dynamic_pointer_cast<CastTo>(Obj)
+#pragma region C++17
+
+	/*
+	* Param 1: Casted To
+	* Param 2: From
+	*/
+	#define SMART_CAST(CastTo, Obj)       std::dynamic_pointer_cast<CastTo>(Obj)
+
+	/*
+	* Param 1: Casted To
+	* Param 2: From
+	*/
+	#define STATIC_CAST(CastTo, Obj)      static_cast<CastTo>(Obj)
+
+	/*
+	* Param 1: Casted To
+	* Param 2: From
+	*/
+	#define REINTERPRET_CAST(CastTo, Obj) reinterpret_cast<CastTo>(Obj)
+
+	/*
+	* Param 1: Casted To
+	* Param 2: From
+	*/
+	#define CONST_CAST(CastTo, Obj)       const_cast<CastTo>(Obj)
+
+#pragma endregion
 
 #pragma region GLS_RENDERING
 

@@ -164,6 +164,7 @@
     <ClInclude Include="imstb_truetype.h" />
     <ClInclude Include="OrthographicCameraController.h" />
     <ClInclude Include="SceneLayer.h" />
+    <ClInclude Include="stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\x64\Debug\Content\Shaders\basic.fs" />

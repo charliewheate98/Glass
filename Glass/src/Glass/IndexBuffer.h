@@ -11,6 +11,9 @@ namespace Glass
 		IndexBuffer(GLsizei buffer_size, const void* buffer_data, GLenum usage);
 		~IndexBuffer();
 
+		inline GLuint& GetCoreBuffer() { return m_Buffer; }
+		inline GLsizei& GetBufferSize() { return m_Size; }
+
 		void BindBuffer();
 	private:
 		GLuint m_Buffer = { 0 };

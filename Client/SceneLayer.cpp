@@ -20,17 +20,20 @@ SceneLayer::SceneLayer()
 	// Load in the shader and Add a Entity positioned within the center of the screen
 	// Seperate Thread ------------
 	m_Futures.push_back(std::async(std::launch::async, Glass::World::PushShader, std::make_shared<Glass::OpenGLShader>("Content/Shaders/basic.vs", "Content/Shaders/basic.fs"), "Basic"));
-	m_Futures.push_back(std::async(std::launch::async, Glass::World::PushObject, std::make_shared<Glass::EntityMesh>(glm::vec3(1920.0f / 2, 1080.f / 2, 0.f), 0)));
+	/*m_Futures.push_back(std::async(std::launch::async,*/ Glass::World::PushObject(std::make_shared<Glass::EntityMesh>(glm::vec3(100.0f, 100.0f, 0.f), 0));
 	// ----------------------------
 
-	// Load in texture for object at index 0 in the ObjectList
-	SMART_CAST(Glass::EntityMesh,		 Glass::World::GetObjectList()[0])->GetTexture() = Glass::Texture2D::Create("Content/Default.png");
-	SMART_CAST(Glass::OpenGLTexture,	 std::dynamic_pointer_cast<Glass::EntityMesh>(Glass::World::GetObjectList()[0])->GetTexture())->SetNumberOfRows(1);
+	//// Load in texture for object at index 0 in the ObjectList
+	SMART_CAST(Glass::EntityMesh,		 Glass::World::GetObjectList()[0])->GetTexture() = Glass::Texture2D::Create("Content/DefaultAtlas.png");
+	SMART_CAST(Glass::OpenGLTexture,	 std::dynamic_pointer_cast<Glass::EntityMesh>(Glass::World::GetObjectList()[0])->GetTexture())->SetNumberOfRows(2);
 
-	// Push Textures into the library
+	m_Animation = new Glass::Animation(std::dynamic_pointer_cast<Glass::EntityMesh>(Glass::World::GetObjectList()[0]), 
+		glm::vec3(100.f, 100.f, 0.f), { 0, 1, 2, 3 }, 3, .5f);
+
+	//// Push Textures into the library
 	Glass::TextureLibrary::Add("Default", SMART_CAST(Glass::EntityMesh, Glass::World::GetObjectList()[0])->GetTexture());
 
-	// Initialise the renderer
+	//// Initialise the renderer
 	LayerRenderer.Init(Glass::World::GetShaderList()[0]);
 }
 
@@ -42,6 +45,8 @@ SceneLayer::~SceneLayer()
 void SceneLayer::Update(float DeltaTime)
 {
 	m_OrthographicCameraController->SimulateControls(*m_OrthographicCamera, 0.5f, DeltaTime);
+
+	m_Animation->Play(DeltaTime);
 }
 
 void SceneLayer::Render()

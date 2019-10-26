@@ -34,14 +34,16 @@ namespace Glass
 
 	void Renderer::Submit(const std::shared_ptr<Object>& obj, const std::shared_ptr<Glass::OpenGLShader>& shader)
 	{
+		static auto& NumberOfRows  = SMART_CAST(OpenGLTexture, std::dynamic_pointer_cast<EntityMesh>(obj)->GetTexture())->GetNumberOfRows();
+
 		shader->Bind();
-
-		shader->SetInt(m_SceneData.loc_Diffuse, 0);
-		shader->SetMatrix4(m_SceneData.loc_view, m_SceneData.ViewProjectionMatrix);
-		shader->SetMatrix4(m_SceneData.loc_Transform, obj->GetTransform());
-
-		shader->SetFloat(loc_numRows, (float)std::dynamic_pointer_cast<OpenGLTexture>(std::dynamic_pointer_cast<EntityMesh>(obj)->GetTexture())->GetNumberOfRows());
-		shader->SetVector2(loc_offset, glm::vec2(std::dynamic_pointer_cast<EntityMesh>(obj)->GetTextureXOffset(), std::dynamic_pointer_cast<EntityMesh>(obj)->GetTextureYOffset()));
+		 
+		shader->SetInt(m_SceneData.loc_Diffuse,		    0);
+		shader->SetMatrix4(m_SceneData.loc_view,	    m_SceneData.ViewProjectionMatrix);
+		shader->SetMatrix4(m_SceneData.loc_Transform,   obj->GetTransform());
+		shader->SetFloat(loc_numRows,					NumberOfRows);
+		shader->SetVector2(loc_offset,					glm::vec2(SMART_CAST(EntityMesh, obj)->GetTextureXOffset(), 
+			SMART_CAST(EntityMesh, obj)->GetTextureYOffset()));
 
 		obj->Render();
 	}

@@ -75,7 +75,7 @@ namespace Glass
 
 		shader->SetInt      (m_SceneData.loc_Diffuse,    0);
 		shader->SetMatrix4  (m_SceneData.loc_view,       m_SceneData.ViewProjectionMatrix);
-		shader->SetFloat    (loc_inumRows,               NumberOfRows);
+		shader->SetFloat    (loc_inumRows,               STATIC_CAST(float, NumberOfRows));
 		shader->SetVector2  (loc_ioffset,		         glm::vec2(xOffset, yOffset));
 
 		RendererCommands::DrawIndexed(std::dynamic_pointer_cast<EntityMesh>(obj)->GetVAO(), 6, (GLsizei)m_Transforms.size());

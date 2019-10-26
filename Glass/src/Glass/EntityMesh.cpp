@@ -4,7 +4,10 @@ namespace Glass
 {
 	EntityMesh::EntityMesh(glm::vec3 Position, int TextureIndex) :
 		Mesh(Position, TextureIndex) {}
-	EntityMesh::~EntityMesh() {}
+	EntityMesh::~EntityMesh() 
+	{
+		SetObjectType(STATIC_SPRITE);
+	}
 
 	void EntityMesh::Tick(float DeltaTime)
 	{

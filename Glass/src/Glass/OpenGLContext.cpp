@@ -12,6 +12,12 @@ namespace Glass
 			LOG_ERROR("Unable To Initialise Glew!");
 			return;
 		}
+
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+
+		glViewport(0, 0, 1920, 1080);
+		glClearColor(0.1f, 0.1f, 0.1f, 1.f);
 	}
 
 	void OpenGLContext::PrintDeviceInfo()
