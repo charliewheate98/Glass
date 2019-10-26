@@ -35,8 +35,6 @@ namespace Glass
 		GLsizei& GetVertexCount() { return m_VertexCount; }
 		int& GetTextureIndex() { return m_TextureIndex; }
 
-		void UpdateTextureIndex() {} 
-
 		float GetTextureXOffset()
 		{
 			int column = GetTextureIndex() % std::dynamic_pointer_cast<OpenGLTexture>(m_Texture)->GetNumberOfRows();

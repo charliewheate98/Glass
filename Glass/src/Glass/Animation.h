@@ -1,6 +1,8 @@
 #pragma once
 
 #include <vector>
+#include <unordered_map>
+
 #include "Timestep.h"
 #include "pch.h"
 #include "Core.h"
@@ -10,19 +12,19 @@ namespace Glass
 {
 	struct Frame
 	{
-		int m_Index;
+		int m_ID;
 
 		Frame() = default;
-		Frame(int index) : m_Index(index) {}
-		~Frame() { m_Index = 0; }
+		Frame(int id) : m_ID(id) {}
+		~Frame() { m_ID = 0; }
 
 		operator int() const
 		{
-			return m_Index;
+			return m_ID;
 		}
 
 		Frame& operator ++() {
-			m_Index++;
+			m_ID++;
 		}
 	};
 
@@ -79,6 +81,11 @@ namespace Glass
 		void Play(Timestep ts);
 
 		/*
+		* Reverse Play this Animation
+		*/
+		void ReversePlay(Timestep ts);
+
+		/*
 		* Pause the animation 
 		*/
 		void Pause();
@@ -106,7 +113,8 @@ namespace Glass
 		uint32_t m_CurrentFrame;
 
 		// delay time till the next frame 
-		float m_TimeToNextFrame;
+		float m_CurrentTimeToNextFrame;
+		float m_StartTimeToNextFrame;
 
 		// is the animation playing?
 		bool m_IsPlaying;
@@ -118,7 +126,52 @@ namespace Glass
 		std::string m_Name;
 	};
 	
-	class GLASS_API AnimationLibrary {};
+	/*
+		The Animation library stores all the animations loaded in
+	*/
+	class GLASS_API AnimationLibrary 
+	{
+	public:
+		/*
+			Initialise the animation library
+		*/
+		static void InitialiseLibrary(GLsizei library_size = 0)
+		{
+			m_Animations.reserve(library_size);
+		}
+
+		/*
+			Add a animation into the library
+		*/
+		static void Add(std::shared_ptr<Animation> animation)
+		{
+			m_Animations.insert({ animation->GetAnimationName(), animation });
+		}
+
+		/*
+			Check if a animation exists in the library
+		*/
+		static bool Exists(const std::string name)
+		{
+			return m_Animations.find(name) != m_Animations.end();
+		}
+
+		/*
+			Get a animation from the list by name
+		*/
+		static std::shared_ptr<Animation>& GetAnimationByName(const std::string& name)
+		{
+			if (Exists(name))
+				return m_Animations[name];
+			else
+				LOG_ERROR("Animation Does Not Exist!");
+		
+			return m_Animations[NULL];
+		}
+	private:
+		// List of all the animations
+		static std::unordered_map<std::string, std::shared_ptr<Animation>> m_Animations;
+	};
 };
 
 
