@@ -22,7 +22,7 @@ namespace Glass
 	void OrthographicCamera::RecalculateViewMatrix()
 	{
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), m_Position) *
-			glm::rotate(glm::mat4(1.0f), m_Rotation, glm::vec3(0.f, 0.f, 1.f));
+							  glm::rotate(glm::mat4(1.0f), m_Rotation, glm::vec3(0.f, 0.f, 1.f));
 
 		m_ViewMatrix = glm::inverse(transform);
 		m_ViewProjectionMatrix = m_ViewMatrix * m_ProjectionMatrix;

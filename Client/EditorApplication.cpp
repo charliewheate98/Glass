@@ -38,8 +38,12 @@ EditorApplication::EditorApplication(const char* title)
 
 	GLContext = std::make_unique<Glass::OpenGLContext>();
 
-	m_SceneLayer = std::make_unique<SceneLayer>();
+	// Editor User Interface
 	m_GuiLayer = std::make_shared<ImGuiLayer>(window, DARK);
+
+	// Layers
+	Glass::LayerManager::PushLayer(std::make_unique<SceneLayer>());
+	Glass::LayerManager::SortLayers();
 }
 
 EditorApplication::~EditorApplication() 
@@ -49,13 +53,16 @@ EditorApplication::~EditorApplication()
 
 void EditorApplication::Tick(Glass::Timestep ts)
 {
-	m_SceneLayer->Update(ts);
+	for (std::shared_ptr<Glass::Layer> layer : Glass::LayerManager::GetLayers())
+		layer->Update(ts);
 }
 
 void EditorApplication::Render()
 {
-	m_SceneLayer->Render();
+	for (std::shared_ptr<Glass::Layer> layer : Glass::LayerManager::GetLayers())
+		layer->Render();
 
+	// Draw the Editor User Interface
 	SMART_CAST(ImGuiLayer, m_GuiLayer)->Render();
 }
 
@@ -66,8 +73,6 @@ void EditorApplication::MainLoop()
 	float previousTime = (float)glfwGetTime();
 
 	GLContext->PrintDeviceInfo();
-
-	bool my_tool_active = true;
 
 	while (!glfwWindowShouldClose(window))
 	{

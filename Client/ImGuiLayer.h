@@ -24,6 +24,7 @@ public:
 	void Update(float DeltaTime) override {}
 	void Render() override;
 private:
+	ImVec4 clear_colour;
 	uint32_t m_CurrentStyle = 0;
 };
 

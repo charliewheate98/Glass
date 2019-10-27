@@ -14,7 +14,7 @@ namespace Glass
 		}
 
 		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		glViewport(0, 0, 1920, 1080);
 		glClearColor(0.1f, 0.1f, 0.1f, 1.f);

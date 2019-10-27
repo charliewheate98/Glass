@@ -1,5 +1,12 @@
 #include "Layer.h"
 
-Glass::Layer::Layer() : 
-	ZIndex(0),
-	name("Default") {}
+namespace Glass
+{
+	std::vector<std::shared_ptr<Layer>> LayerManager::m_Layers;
+
+	Layer::Layer(std::string name, uint32_t index) :
+		m_ZIndex(index),
+		m_Name(name)
+	{}
+}
+

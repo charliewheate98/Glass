@@ -5,14 +5,9 @@
 std::vector<std::future<void>> m_Futures;
 std::vector<Glass::Transform*> transforms;
 
-SceneLayer::SceneLayer() 
+SceneLayer::SceneLayer() :
+	Layer("gls_SceneLayer", 0)
 {
-	// layer sort index
-	ZIndex = 0;
-
-	// layer name
-	SetName("gls_SceneLayer"); 
-
 	// Init Camera
 	m_OrthographicCamera = std::make_unique<Glass::OrthographicCamera>(0.0f, 1920.f, 1080.f, 0.0f);
 	m_OrthographicCameraController = std::make_unique<OrthographicCameraController>();
@@ -28,14 +23,13 @@ SceneLayer::SceneLayer()
 	SMART_CAST(Glass::OpenGLTexture,	 std::dynamic_pointer_cast<Glass::EntityMesh>(Glass::World::GetObjectList()[0])->GetTexture())->SetNumberOfRows(2);
 
 	// Animations
-	std::vector<Glass::Frame> frames = { 3, 1, 2, 0 };
-	m_Animation = std::make_shared<Glass::Animation>(std::dynamic_pointer_cast<Glass::EntityMesh>(Glass::World::GetObjectList()[0]), 
-		glm::vec3(100.f, 100.f, 0.f), frames, 4, .2f);
+	std::vector<Glass::Frame> frames = { 0, 1, 2, 3 };
+	m_Animation = std::make_shared<Glass::Animation>(std::dynamic_pointer_cast<Glass::EntityMesh>(Glass::World::GetObjectList()[0]), glm::vec3(100.f, 100.f, 0.f), frames, 4, .5f);
 	m_Animation->SetAnimationName("LeavesAnimation");
 
 	// Push Textures into the tex library
 	// Push Animations into the anim library
-	Glass::TextureLibrary::Add("Default", SMART_CAST(Glass::EntityMesh, Glass::World::GetObjectList()[0])->GetTexture());
+	Glass::TextureLibrary::Add("Default",  SMART_CAST(Glass::EntityMesh, Glass::World::GetObjectList()[0])->GetTexture());
 	Glass::AnimationLibrary::Add(m_Animation);
 
 	// Initialise the renderer

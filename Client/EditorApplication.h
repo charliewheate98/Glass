@@ -23,8 +23,6 @@
 class EditorApplication : public Glass::Application
 {
 private:
-	std::unique_ptr<Glass::Layer> m_SceneLayer;
-
 	// has to be shared to be dynamically casted
 	std::shared_ptr<Glass::Layer> m_GuiLayer;
 
@@ -36,7 +34,7 @@ public:
 	EditorApplication(const char* title);
 	~EditorApplication();
 
-	virtual void MainLoop()	           override;
+	virtual void MainLoop()	                   override;
 	virtual void Tick(Glass::Timestep ts)	   override;
-	virtual void Render()			   override;
+	virtual void Render()			           override;
 };

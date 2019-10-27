@@ -15,9 +15,9 @@ namespace Glass
 		m_NumFrames(num_frames), // the maximum number of frames
 		m_CurrentTimeToNextFrame(time_to_next_frame), // The time is takes to transition to the next frame
 		m_Frames(frames), // the list of all the frames
-		m_CurrentFrame(0), // the current frame the animation is at
+		m_CurrentFrame(0),
 		m_IsLooped(true), // Is this Animation Looping?
-		m_IsPlaying(false) // Is this Animation Currently Playing?
+		m_IsPlaying(true) // Is this Animation Currently Playing?
 	{
 		// Initialise the position from the base interface (Object)
 		m_Position = position;
@@ -25,8 +25,6 @@ namespace Glass
 
 		// size the vector depending on the 
 		frames.resize(m_NumFrames);
-
-		LOG_TRACE("Animation {0} is Playing!", m_Name);
 	}
 
 	/*
@@ -50,22 +48,20 @@ namespace Glass
 	void Animation::IncrementFrame(Timestep ts)
 	{
 		// Update the texture index
-		m_Mesh->SetTextureIndex(m_CurrentFrame); 
+		m_Mesh->SetTextureIndex(m_Frames[m_CurrentFrame]); 
 			
 		// Decrement the timer by timestep
 		m_CurrentTimeToNextFrame -= ts;
 
 		// If there are more then 0 frames
-		if (m_Frames.size() > 0)
+		if (m_Frames.size() > 0 && m_IsPlaying)
 		{
 			// if the time to next frame is 0
 			// then we are ready to go to the next frame
 			if (m_CurrentTimeToNextFrame <= 0.f)
 			{
-				// we are now playing the animation
-				m_IsPlaying = true;
-
 				// Increment to the next frame
+				//m_CurrentFrame++;
 				m_CurrentFrame++;
 
 				// if this animation is not a looping animation then 
@@ -74,7 +70,11 @@ namespace Glass
 				// else reset the animation
 				if (!m_IsLooped)
 				{
-					m_CurrentFrame >= m_NumFrames ? m_CurrentFrame = m_NumFrames : NULL;
+					if(m_CurrentFrame >= m_NumFrames)
+					{
+						m_CurrentFrame = m_Frames[0];
+						m_IsPlaying = false;
+					}
 				}
 				else 
 				{
@@ -82,7 +82,7 @@ namespace Glass
 					// then reset the animation
 					if (m_CurrentFrame >= m_NumFrames)
 					{
-						m_CurrentFrame = 0;
+						m_CurrentFrame = m_Frames[0];
 					}
 				}
 
@@ -91,7 +91,7 @@ namespace Glass
 				m_CurrentTimeToNextFrame -= ts;
 			}
 		}
-		else
+		else if(m_Frames.size() <= 0)
 			LOG_ERROR("[IncrementFrame] Unable to Play Animation. Not Enough Frames");
 	}
 

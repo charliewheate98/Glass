@@ -10,29 +10,59 @@
 
 namespace Glass
 {
-	struct Frame
+	/*
+		This class represents a single Frame
+	*/
+	class Frame
 	{
+	private:
+		// the frame id/index
 		int m_ID;
-
+	public:
+		/*
+			Default Constructer to prevent initialisation errors
+		*/
 		Frame() = default;
-		Frame(int id) : m_ID(id) {}
-		~Frame() { m_ID = 0; }
 
+		/*
+			Constructer. initiaise the id/index
+		*/
+		Frame(int id) : m_ID(id) {}
+
+		/*
+			Destructer, set the id/index to be NULL when memory is deallocated/free'd
+		*/
+		~Frame() { m_ID = NULL; }
+
+		/*
+			Handle the user to present a frame object as a index/integer
+		*/
 		operator int() const
 		{
 			return m_ID;
 		}
 
-		Frame& operator ++() {
+		/*
+			When I do 'Frame++' this will increment the frame index
+		*/
+		Frame operator ++(int) {
 			m_ID++;
+			return *this;
 		}
 	};
 
 	class GLASS_API Animation : public Object
 	{
 	public:
+		/*
+			Constructer. Initialise an animations
+		*/
 		Animation(std::shared_ptr<EntityMesh> mesh, glm::vec3 position, std::vector<Frame> frames,
 			uint32_t num_frames, float time_to_next_frame = 3.f);
+
+		/*
+			Free memory when out of scope
+		*/
 		~Animation();
 
 		/*
@@ -146,6 +176,7 @@ namespace Glass
 		static void Add(std::shared_ptr<Animation> animation)
 		{
 			m_Animations.insert({ animation->GetAnimationName(), animation });
+			LOG_TRACE("Animation '{0}' Pushed into the Animation Library", animation->GetAnimationName());
 		}
 
 		/*
