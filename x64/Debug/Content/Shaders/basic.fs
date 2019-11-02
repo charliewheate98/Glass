@@ -12,5 +12,6 @@ in PassData
 
 void main()
 {
-	FragColor = texture(m_Diffuse, inData.TexCoords);	
+	//FragColor = texture(m_Diffuse, inData.TexCoords);	
+	FragColor = vec4(1.0, 0.5, 0.3, 1.0);
 }

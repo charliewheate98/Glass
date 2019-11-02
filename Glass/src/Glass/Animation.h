@@ -98,22 +98,22 @@ namespace Glass
 		/*
 		* Increment the current frame depending on conditions
 		*/
-		void IncrementFrame(Timestep ts);
+		void IncrementFrame();
 
 		/*
 		* Decrement the current frame depending on conditions
 		*/
-		void DecrementFrame(Timestep ts);
+		void DecrementFrame();
 		
 		/*
 		* Play this animation
 		*/
-		void Play(Timestep ts);
+		void Play();
 
 		/*
 		* Reverse Play this Animation
 		*/
-		void ReversePlay(Timestep ts);
+		void ReversePlay();
 
 		/*
 		* Pause the animation 

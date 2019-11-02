@@ -5,12 +5,12 @@
 
 namespace Glass
 {
-	class GLASS_API Timestep
+	class GLASS_API	VariableTimestep
 	{
 	public:
-		Timestep() = default;
-		Timestep(float time) : m_Time(time) {}
-		~Timestep() {}
+		VariableTimestep() = default;
+		VariableTimestep(float time) : m_Time(time) {}
+		~VariableTimestep() {}
 
 		operator float() const
 		{

@@ -30,10 +30,12 @@ namespace Glass
 		m_SceneData.ViewProjectionMatrix = camera.GetViewProjectionMatrix();
 	}
 
-	void Renderer::End(){}
+	void Renderer::End()
+	{}
 
 	void Renderer::Submit(const std::shared_ptr<Object>& obj, const std::shared_ptr<Glass::OpenGLShader>& shader)
 	{
+		printf("test");
 		static auto& NumberOfRows  = SMART_CAST(OpenGLTexture, std::dynamic_pointer_cast<EntityMesh>(obj)->GetTexture())->GetNumberOfRows();
 
 		shader->Bind();
@@ -42,8 +44,8 @@ namespace Glass
 		shader->SetMatrix4(m_SceneData.loc_view,	    m_SceneData.ViewProjectionMatrix);
 		shader->SetMatrix4(m_SceneData.loc_Transform,   obj->GetTransform());
 		shader->SetFloat(loc_numRows,					NumberOfRows);
-		shader->SetVector2(loc_offset,					glm::vec2(SMART_CAST(EntityMesh, obj)->GetTextureXOffset(), 
-			SMART_CAST(EntityMesh, obj)->GetTextureYOffset()));
+		shader->SetVector2(loc_offset,					glm::vec2(  SMART_CAST(EntityMesh, obj)->GetTextureXOffset(), 
+																	SMART_CAST(EntityMesh, obj)->GetTextureYOffset()));
 
 		obj->Render();
 	}

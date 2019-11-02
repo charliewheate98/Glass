@@ -17,7 +17,7 @@ namespace Glass
 	{
 	}
 
-	void Application::Tick(Timestep delta)
+	void Application::Tick()
 	{
 	}
 

@@ -19,7 +19,7 @@ namespace Glass
 		static GLFWwindow& GetWindow() { return *window; }
 
 		virtual void MainLoop();
-		virtual void Tick(Timestep delta);
+		virtual void Tick();
 		virtual void Render();
 	};
 }

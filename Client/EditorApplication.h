@@ -35,6 +35,6 @@ public:
 	~EditorApplication();
 
 	virtual void MainLoop()	                   override;
-	virtual void Tick(Glass::Timestep ts)	   override;
+	virtual void Tick()	   override;
 	virtual void Render()			           override;
 };

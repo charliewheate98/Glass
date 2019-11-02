@@ -20,6 +20,7 @@ namespace Glass
 		virtual void Update(float DeltaTime) {}
 		virtual void Render() {}
 
+		void SetZIndex(uint32_t zindex) { m_ZIndex = zindex; }
 		void SetName(const std::string& layer_name) { m_Name = layer_name; }
 		const std::string& GetName() { return m_Name; }
 

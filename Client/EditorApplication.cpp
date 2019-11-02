@@ -2,6 +2,7 @@
 #include "SceneLayer.h"
 #include "ImGuiLayer.h"
 #include "Glass/Timestep.h"
+#include "Glass/FixedTimestep.h"
 
 // include stb_image in order to load in the window icon
 #define STB_IMAGE_IMPLEMENTATION
@@ -36,10 +37,11 @@ EditorApplication::EditorApplication(const char* title)
 	glfwSetFramebufferSizeCallback(window, GetFramebufferSize);
 	glfwSwapInterval(1); 
 
+	// the opengl context
 	GLContext = std::make_unique<Glass::OpenGLContext>();
 
 	// Editor User Interface
-	m_GuiLayer = std::make_shared<ImGuiLayer>(window, DARK);
+	//m_GuiLayer = std::make_shared<ImGuiLayer>(window, DARK);
 
 	// Layers
 	Glass::LayerManager::PushLayer(std::make_unique<SceneLayer>());
@@ -51,10 +53,10 @@ EditorApplication::~EditorApplication()
 	m_DeltaTime = 0.f;
 }
 
-void EditorApplication::Tick(Glass::Timestep ts)
+void EditorApplication::Tick()
 {
 	for (std::shared_ptr<Glass::Layer> layer : Glass::LayerManager::GetLayers())
-		layer->Update(ts);
+		layer->Update(0.f);
 }
 
 void EditorApplication::Render()
@@ -63,7 +65,7 @@ void EditorApplication::Render()
 		layer->Render();
 
 	// Draw the Editor User Interface
-	SMART_CAST(ImGuiLayer, m_GuiLayer)->Render();
+	//SMART_CAST(ImGuiLayer, m_GuiLayer)->Render();
 }
 
 std::vector<std::string> menu_items;
@@ -74,17 +76,22 @@ void EditorApplication::MainLoop()
 
 	GLContext->PrintDeviceInfo();
 
+	Glass::Timestep timeStep(12.f);
+
 	while (!glfwWindowShouldClose(window))
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		SMART_CAST(ImGuiLayer, m_GuiLayer)->CreateFrame();
+		//SMART_CAST(ImGuiLayer, m_GuiLayer)->CreateFrame();
 
-		float currentTime = STATIC_CAST(float, glfwGetTime());
-		Glass::Timestep timestep = currentTime - previousTime;
-		previousTime = currentTime;
+		timeStep.CalcLastElapsed();
+		while (timeStep.timeElapsed())
+		{
+			Tick();
+			timeStep.ResetElapsed();
+		}
+		timeStep.Lock();
 
-		Tick(timestep);
 		Render();
 
 		glfwPollEvents();

@@ -26,7 +26,7 @@ namespace Glass
 			0, 1, 3,
 			1, 2, 3
 		};
-
+		
 		m_VertexArray = new Glass::VertexArray();
 
 		m_VertexArray->BindVertexArray();
@@ -34,15 +34,17 @@ namespace Glass
 		m_VertexBuffer = new Glass::VertexBuffer(sizeof(vertices), vertices, GL_STATIC_DRAW);
 		m_IndexBuffer = new Glass::IndexBuffer(sizeof(indices), indices, GL_STATIC_DRAW);
 
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(1);
+		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindVertexArray(0);
 
 		m_VertexCount += 6;
+		
+		SetTransformationMatrix();
 	}
 
 	Mesh::~Mesh() 
@@ -60,8 +62,6 @@ namespace Glass
 
 	void Mesh::Render()
 	{
-		SetTransformationMatrix();
-
 		m_VertexArray->BindVertexArray();
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
 	}

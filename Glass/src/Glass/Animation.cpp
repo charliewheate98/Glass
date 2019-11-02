@@ -45,13 +45,13 @@ namespace Glass
 	/*
 		Increment the frames
 	*/
-	void Animation::IncrementFrame(Timestep ts)
+	void Animation::IncrementFrame()
 	{
 		// Update the texture index
 		m_Mesh->SetTextureIndex(m_Frames[m_CurrentFrame]); 
 			
 		// Decrement the timer by timestep
-		m_CurrentTimeToNextFrame -= ts;
+		m_CurrentTimeToNextFrame -= 0.1f;
 
 		// If there are more then 0 frames
 		if (m_Frames.size() > 0 && m_IsPlaying)
@@ -88,7 +88,7 @@ namespace Glass
 
 				// Reset the Delay Timer
 				m_CurrentTimeToNextFrame = m_StartTimeToNextFrame;
-				m_CurrentTimeToNextFrame -= ts;
+				m_CurrentTimeToNextFrame -= 0.1f;
 			}
 		}
 		else if(m_Frames.size() <= 0)
@@ -98,13 +98,13 @@ namespace Glass
 	/*
 		Decrement the frames
 	*/
-	void Animation::DecrementFrame(Timestep ts)
+	void Animation::DecrementFrame()
 	{
 		// Update the texture index
 		m_Mesh->SetTextureIndex(m_CurrentFrame);
 
 		// Decrement the timer by timestep
-		m_CurrentTimeToNextFrame -= ts;
+		m_CurrentTimeToNextFrame -= 0.1f;
 
 		// if there are more then 0 frames
 		if (m_Frames.size() > 0)
@@ -139,7 +139,7 @@ namespace Glass
 
 				// Reset the Delay Timer1
 				m_CurrentTimeToNextFrame = m_StartTimeToNextFrame;
-				m_CurrentTimeToNextFrame -= ts;
+				m_CurrentTimeToNextFrame -= 0.1f;
 			}
 		}
 		else
@@ -149,17 +149,17 @@ namespace Glass
 	/*
 		Play the animation
 	*/
-	void Animation::Play(Timestep ts)
+	void Animation::Play()
 	{
-		IncrementFrame(ts);
+		IncrementFrame();
 	}
 
 	/*
 		Play the Animation in reverse
 	*/
-	void Animation::ReversePlay(Timestep ts)
+	void Animation::ReversePlay()
 	{
-		DecrementFrame(ts);
+		DecrementFrame();
 	}
 
 	/*
