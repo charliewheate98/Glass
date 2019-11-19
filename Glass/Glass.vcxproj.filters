@@ -13,221 +13,248 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\OpenGL">
-      <UniqueIdentifier>{1060948e-1739-4f31-8ecd-cb157f8ad1b3}</UniqueIdentifier>
+    <Filter Include="Header Files\Engine">
+      <UniqueIdentifier>{63989295-6e0b-47a3-b36f-966f0eeff77f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\OpenGL">
-      <UniqueIdentifier>{96e511fc-e0da-4bf4-873f-fef3bd1ed259}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Wrapper Classes">
+    <Filter Include="Header Files\Engine\Wrapper Classes">
       <UniqueIdentifier>{26481c40-5271-40ab-af92-abfae1ea74ef}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Wrapper Classes">
-      <UniqueIdentifier>{45a40d8f-33b4-4490-9770-d883f28f53c8}</UniqueIdentifier>
+    <Filter Include="Header Files\Engine\OpenGL">
+      <UniqueIdentifier>{96e511fc-e0da-4bf4-873f-fef3bd1ed259}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Graphics">
-      <UniqueIdentifier>{c023644c-bc2e-456a-ba66-5254565e0c4d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Graphics">
-      <UniqueIdentifier>{de5afbed-fb93-4ea8-8705-fa67414873c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Core">
-      <UniqueIdentifier>{2d31ed7b-dcbc-48fc-b06e-91c744180ee3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core">
-      <UniqueIdentifier>{7ab61054-2fcd-4f1b-86a8-fa2a6a481685}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Utils">
-      <UniqueIdentifier>{617fb3bb-39d4-4e4a-8beb-2070c81d11d9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Utils">
+    <Filter Include="Header Files\Engine\Utils">
       <UniqueIdentifier>{9a63badc-6297-42e1-a25f-e1d833133555}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Vulkan">
+    <Filter Include="Header Files\Engine\Vulkan">
       <UniqueIdentifier>{17c8d30f-314e-47fd-90a5-0687c931dd11}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Vulkan">
-      <UniqueIdentifier>{431950b7-fda9-46e5-abde-3d2ab0e91a48}</UniqueIdentifier>
+    <Filter Include="Header Files\Engine\Graphics">
+      <UniqueIdentifier>{c023644c-bc2e-456a-ba66-5254565e0c4d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Entities">
-      <UniqueIdentifier>{8e695478-c9a3-4c5b-b9e7-b06f3f4cb2f1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Entities">
+    <Filter Include="Header Files\Engine\Entities">
       <UniqueIdentifier>{2de0642b-50c4-4e49-8e99-5d51933a3196}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Audio">
+    <Filter Include="Header Files\Engine\Core">
+      <UniqueIdentifier>{2d31ed7b-dcbc-48fc-b06e-91c744180ee3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Engine\Audio">
       <UniqueIdentifier>{4f1be602-504d-4930-8798-6c2df014d39c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Audio">
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{cf2154f0-d19e-418b-94e1-e165ea2a8c83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Wrapper Classes">
+      <UniqueIdentifier>{45a40d8f-33b4-4490-9770-d883f28f53c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\OpenGL">
+      <UniqueIdentifier>{1060948e-1739-4f31-8ecd-cb157f8ad1b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Utils">
+      <UniqueIdentifier>{617fb3bb-39d4-4e4a-8beb-2070c81d11d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Vulkan">
+      <UniqueIdentifier>{431950b7-fda9-46e5-abde-3d2ab0e91a48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Graphics">
+      <UniqueIdentifier>{de5afbed-fb93-4ea8-8705-fa67414873c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Entities">
+      <UniqueIdentifier>{8e695478-c9a3-4c5b-b9e7-b06f3f4cb2f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Core">
+      <UniqueIdentifier>{7ab61054-2fcd-4f1b-86a8-fa2a6a481685}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Audio">
       <UniqueIdentifier>{7fa34a4a-cf3f-46f9-b435-3648f79f7568}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Glass\stb_image.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Engine\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\OpenGLTexture.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Engine\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\OpenGLShader.h">
-      <Filter>Header Files\OpenGL</Filter>
+      <Filter>Header Files\Engine\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\IndexBuffer.h">
-      <Filter>Header Files\Wrapper Classes</Filter>
+      <Filter>Header Files\Engine\Wrapper Classes</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\Timestep.h">
-      <Filter>Header Files\Wrapper Classes</Filter>
+      <Filter>Header Files\Engine\Wrapper Classes</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\VertexArray.h">
-      <Filter>Header Files\Wrapper Classes</Filter>
+      <Filter>Header Files\Engine\Wrapper Classes</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\VertexBuffer.h">
-      <Filter>Header Files\Wrapper Classes</Filter>
+      <Filter>Header Files\Engine\Wrapper Classes</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\Layer.h">
-      <Filter>Header Files\Graphics</Filter>
+      <Filter>Header Files\Engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\InstanceRenderer.h">
-      <Filter>Header Files\Graphics</Filter>
+      <Filter>Header Files\Engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\Renderer.h">
-      <Filter>Header Files\Graphics</Filter>
+      <Filter>Header Files\Engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\Texture.h">
-      <Filter>Header Files\Graphics</Filter>
+      <Filter>Header Files\Engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\Vertex.h">
-      <Filter>Header Files\Graphics</Filter>
+      <Filter>Header Files\Engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\Mesh.h">
-      <Filter>Header Files\Graphics</Filter>
+      <Filter>Header Files\Engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\Glass.h">
-      <Filter>Header Files\Core</Filter>
+      <Filter>Header Files\Engine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\Application.h">
-      <Filter>Header Files\Core</Filter>
+      <Filter>Header Files\Engine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\Core.h">
-      <Filter>Header Files\Core</Filter>
+      <Filter>Header Files\Engine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\EntryPoint.h">
-      <Filter>Header Files\Core</Filter>
+      <Filter>Header Files\Engine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\OrthographicCamera.h">
-      <Filter>Header Files\Core</Filter>
+      <Filter>Header Files\Engine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\Logger.h">
-      <Filter>Header Files\Utils</Filter>
+      <Filter>Header Files\Engine\Utils</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\Input.h">
-      <Filter>Header Files\Utils</Filter>
+      <Filter>Header Files\Engine\Utils</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\Object.h">
-      <Filter>Header Files\Core</Filter>
+      <Filter>Header Files\Engine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\pch.h">
-      <Filter>Header Files\Core</Filter>
+      <Filter>Header Files\Engine\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\Transform.h">
-      <Filter>Header Files\Graphics</Filter>
+      <Filter>Header Files\Engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\OpenGLContext.h">
-      <Filter>Header Files\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Glass\VulkanContext.h">
-      <Filter>Header Files\Vulkan</Filter>
+      <Filter>Header Files\Engine\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\World.h">
-      <Filter>Header Files\Graphics</Filter>
+      <Filter>Header Files\Engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\EntityMesh.h">
-      <Filter>Header Files\Entities</Filter>
+      <Filter>Header Files\Engine\Entities</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\AudioBuffer.h">
-      <Filter>Header Files\Audio</Filter>
+      <Filter>Header Files\Engine\Audio</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\Animation.h">
-      <Filter>Header Files\Utils</Filter>
+      <Filter>Header Files\Engine\Utils</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\OpenALSource.h">
-      <Filter>Header Files\Audio</Filter>
+      <Filter>Header Files\Engine\Audio</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\BatchRenderer.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Engine\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\FixedTimestep.h">
+      <Filter>Header Files\Engine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glass\Buffer.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glass\DiffuseShader.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glass\Profiler.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glass\Shader.h">
+      <Filter>Header Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glass\Text.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glass\TextShader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Glass\OpenGLTexture.cpp">
-      <Filter>Source Files\OpenGL</Filter>
+      <Filter>Source Files\Engine\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\OpenGLShader.cpp">
-      <Filter>Source Files\OpenGL</Filter>
+      <Filter>Source Files\Engine\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\IndexBuffer.cpp">
-      <Filter>Source Files\Wrapper Classes</Filter>
+      <Filter>Source Files\Engine\Wrapper Classes</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\Timestep.cpp">
-      <Filter>Source Files\Wrapper Classes</Filter>
+      <Filter>Source Files\Engine\Wrapper Classes</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\VertexArray.cpp">
-      <Filter>Source Files\Wrapper Classes</Filter>
+      <Filter>Source Files\Engine\Wrapper Classes</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\VertexBuffer.cpp">
-      <Filter>Source Files\Wrapper Classes</Filter>
+      <Filter>Source Files\Engine\Wrapper Classes</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\InstanceRenderer.cpp">
-      <Filter>Source Files\Graphics</Filter>
+      <Filter>Source Files\Engine\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\Renderer.cpp">
-      <Filter>Source Files\Graphics</Filter>
+      <Filter>Source Files\Engine\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\Texture.cpp">
-      <Filter>Source Files\Graphics</Filter>
+      <Filter>Source Files\Engine\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\Mesh.cpp">
-      <Filter>Source Files\Graphics</Filter>
+      <Filter>Source Files\Engine\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\Layer.cpp">
-      <Filter>Source Files\Graphics</Filter>
+      <Filter>Source Files\Engine\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\Application.cpp">
-      <Filter>Source Files\Core</Filter>
+      <Filter>Source Files\Engine\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\Logger.cpp">
-      <Filter>Source Files\Utils</Filter>
+      <Filter>Source Files\Engine\Utils</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\OrthographicCamera.cpp">
-      <Filter>Source Files\Core</Filter>
+      <Filter>Source Files\Engine\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\OpenGLContext.cpp">
-      <Filter>Source Files\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Glass\VulkanContext.cpp">
-      <Filter>Source Files\Vulkan</Filter>
+      <Filter>Source Files\Engine\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\World.cpp">
-      <Filter>Source Files\Graphics</Filter>
+      <Filter>Source Files\Engine\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\EntityMesh.cpp">
-      <Filter>Source Files\Entities</Filter>
+      <Filter>Source Files\Engine\Entities</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\Animation.cpp">
-      <Filter>Source Files\Utils</Filter>
+      <Filter>Source Files\Engine\Utils</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\AudioBuffer.cpp">
-      <Filter>Source Files\Audio</Filter>
+      <Filter>Source Files\Engine\Audio</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\OpenALSource.cpp">
-      <Filter>Source Files\Audio</Filter>
+      <Filter>Source Files\Engine\Audio</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\BatchRenderer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Engine\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\Glass\FixedTimestep.cpp">
+      <Filter>Source Files\Engine\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Glass\DiffuseShader.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Glass\Text.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Glass\TextShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

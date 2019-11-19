@@ -1,23 +1,18 @@
 #pragma once
 
-#include "pch.h"
-#include "Core.h"
+#include "Buffer.h"
 
 namespace Glass
 {
-	class GLASS_API IndexBuffer
+	class GLASS_API IndexBuffer : public Buffer
 	{
 	public:
-		IndexBuffer(GLsizei buffer_size, const void* buffer_data, GLenum usage);
+		IndexBuffer();
 		~IndexBuffer();
 
-		inline GLuint& GetCoreBuffer() { return m_Buffer; }
-		inline GLsizei& GetBufferSize() { return m_Size; }
-
-		void BindBuffer();
-	private:
-		GLuint m_Buffer = { 0 };
-		GLsizei m_Size = { 0 };
+		void UpdateBuffer(GLsizei buffer_size, void* buffer_data, GLenum usage);
+		void UnbindBuffer() override;
+		void BindBuffer() override;
 	};
 }
 

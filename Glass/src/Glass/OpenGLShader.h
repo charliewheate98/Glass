@@ -38,32 +38,4 @@ namespace Glass
 		void CheckCompileErrors(int shader, std::string type);
 		void Bind();
 	};
-
-	class GLASS_API ShaderLibrary
-	{
-	public:
-		static void InitialiseLibrary(size_t library_size = 0)
-		{
-			m_Shaders.reserve(library_size);
-		}
-		
-		static void Add(std::shared_ptr<OpenGLShader>& shader)
-		{
-			auto& name = shader->GetShaderName();
-			m_Shaders.insert( { name, shader } );
-		}
-
-		static bool Exists(const std::string& name)
-		{
-			return m_Shaders.find(name) != m_Shaders.end();
-		}
-
-		static SharedScope<OpenGLShader>& Get(const std::string& name)
-		{
-			if (Exists(name))
-				return m_Shaders[name];
-		}
-	private:
-		static std::unordered_map<std::string, std::shared_ptr<OpenGLShader>> m_Shaders;
-	};
 }

@@ -26,7 +26,7 @@ namespace Glass
 		for (unsigned int i = 0; i < transforms.size(); i++)
 			m_Transforms.push_back(transforms[i]->GetCoreMatrix());
 
-		VertexBuffer m_Buffer((GLsizei)transforms.size() * sizeof(glm::mat4), &m_Transforms[0], GL_STATIC_DRAW);
+		VertexBuffer m_Buffer();
 
 		std::dynamic_pointer_cast<Mesh>(obj)->GetVAO().BindVertexArray();
 
@@ -78,7 +78,7 @@ namespace Glass
 		shader->SetFloat    (loc_inumRows,               STATIC_CAST(float, NumberOfRows));
 		shader->SetVector2  (loc_ioffset,		         glm::vec2(xOffset, yOffset));
 
-		RendererCommands::DrawIndexed(std::dynamic_pointer_cast<EntityMesh>(obj)->GetVAO(), 6, (GLsizei)m_Transforms.size());
+		RendererCommands::DrawIndexedInst(std::dynamic_pointer_cast<EntityMesh>(obj)->GetVAO(), 6, (GLsizei)m_Transforms.size());
 	}
 
 	void InstanceRenderer::Destroy()

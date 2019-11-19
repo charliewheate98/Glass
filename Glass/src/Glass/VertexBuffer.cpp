@@ -2,19 +2,19 @@
 
 namespace Glass
 {
-	VertexBuffer::VertexBuffer(GLsizei buffer_size, void* buffer_data, GLenum usage) : 
-		m_Size(buffer_size),
-		m_Buffer_Data(buffer_data)
+	VertexBuffer::VertexBuffer()
 	{
 		glGenBuffers(1, &m_Buffer);
 		glBindBuffer(GL_ARRAY_BUFFER, m_Buffer);
-		glBufferData(GL_ARRAY_BUFFER, buffer_size, buffer_data, usage);
 	}
 
-	void VertexBuffer::UpdateBuffer(GLsizei buffer_size)
+	void VertexBuffer::UpdateBuffer(GLsizei buffer_size, void* buffer_data, const GLenum usage)
 	{
-		glBindBuffer(GL_ARRAY_BUFFER, m_Buffer);
-		glBufferData(GL_ARRAY_BUFFER, buffer_size, m_Buffer_Data, GL_STATIC_DRAW);
+		m_BufferSize = buffer_size;
+		m_BufferData = buffer_data;
+		m_BufferUsage = usage;
+
+		glBufferData(GL_ARRAY_BUFFER, buffer_size, m_BufferData, m_BufferUsage);
 	}
 
 	void VertexBuffer::BindBuffer()
@@ -22,9 +22,14 @@ namespace Glass
 		glBindBuffer(GL_ARRAY_BUFFER, m_Buffer);
 	}
 
+	void VertexBuffer::UnbindBuffer()
+	{
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+	}
+
 	VertexBuffer::~VertexBuffer()
 	{
-		m_Size = NULL;
+		m_BufferSize = NULL;
 		glDeleteBuffers(1, &m_Buffer);
 	}
 }

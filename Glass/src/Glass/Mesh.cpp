@@ -26,15 +26,15 @@ namespace Glass
 			0, 1, 3,
 			1, 2, 3
 		};
-		
-		m_VertexArray = new Glass::VertexArray();
+
+		/*m_VertexArray = new Glass::VertexArray();
 
 		m_VertexArray->BindVertexArray();
 
-		m_VertexBuffer = new Glass::VertexBuffer(sizeof(vertices), vertices, GL_STATIC_DRAW);
-		m_IndexBuffer = new Glass::IndexBuffer(sizeof(indices), indices, GL_STATIC_DRAW);
+		m_VertexBuffer = new Glass::VertexBuffer();
+		m_IndexBuffer = new Glass::IndexBuffer();*/
 
-		glEnableVertexAttribArray(0);
+	/*	glEnableVertexAttribArray(0);
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(1);
 		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
@@ -44,26 +44,26 @@ namespace Glass
 
 		m_VertexCount += 6;
 		
-		SetTransformationMatrix();
+		SetTransformationMatrix();*/
 	}
 
 	Mesh::~Mesh() 
 	{
-		m_VertexArray = nullptr;
-		m_VertexBuffer = nullptr;
-		m_IndexBuffer = nullptr;
+		//m_VertexArray = nullptr;
+		//m_VertexBuffer = nullptr;
+		//m_IndexBuffer = nullptr;
 
-		delete m_VertexArray;
-		delete m_VertexBuffer;
-		delete m_IndexBuffer;
+		//delete m_VertexArray;
+		//delete m_VertexBuffer;
+		//delete m_IndexBuffer;
 	}
 
 	void Mesh::Tick(float DeltaTime) {}
 
 	void Mesh::Render()
 	{
-		m_VertexArray->BindVertexArray();
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
+		//m_VertexArray->BindVertexArray();
+		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
 	}
 }
 

@@ -2,23 +2,34 @@
 
 namespace Glass
 {
-	IndexBuffer::IndexBuffer(GLsizei buffer_size, const void* buffer_data, GLenum usage)
+	IndexBuffer::IndexBuffer()
 	{
-		m_Size = buffer_size;
-
 		glGenBuffers(1, &m_Buffer);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_Buffer);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, buffer_size, buffer_data, usage);
+	}
+
+	void IndexBuffer::UpdateBuffer(GLsizei buffer_size, void* buffer_data, GLenum usage)
+	{
+		m_BufferUsage = usage;
+		m_BufferSize = buffer_size;
+		m_BufferData = buffer_data;
+
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, buffer_size, m_BufferData, m_BufferUsage);
 	}
 
 	IndexBuffer::~IndexBuffer()
 	{
-		m_Size = NULL;
+		m_BufferSize = NULL;
 		glDeleteBuffers(1, &m_Buffer);
 	}
 
 	void IndexBuffer::BindBuffer()
 	{
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_Buffer);
+	}
+
+	void IndexBuffer::UnbindBuffer()
+	{
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}
 }

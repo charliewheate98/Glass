@@ -1,2 +1,3 @@
 ﻿  SceneLayer.cpp
+C:\Dev\Glass\Glass\src\Glass\Text.h(99,1): warning C4267: 'argument': conversion from 'size_t' to 'const GLsizei', possible loss of data
   Client.vcxproj -> C:\Dev\Glass\x64\Debug\Client.exe

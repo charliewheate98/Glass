@@ -2,8 +2,6 @@
 
 namespace Glass
 {
-	std::unordered_map<std::string, std::shared_ptr<OpenGLShader>> ShaderLibrary::m_Shaders;
-
 	OpenGLShader::OpenGLShader(const char* vs, const char* fs) :
 		shader_name("No-Name-Given")
 	{

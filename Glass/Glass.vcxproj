@@ -72,14 +72,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)bin\</OutDir>
     <IntDir>$(SolutionDir)bin-int\</IntDir>
-    <LibraryPath>C:\Users\Owner\Desktop\Octagram\libs\OpenAL 1.1 SDK\libs\Win64;C:\VulkanSDK\1.1.121.2\Lib;C:\Dev\Glass\vendor\glew\lib\Release\x64;C:\Dev\Glass\vendor\glfw\lib-vc2019;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Users\Owner\Desktop\Octagram\libs\OpenAL 1.1 SDK\include;C:\VulkanSDK\1.1.121.2\Include;C:\Users\Owner\Desktop\Octagram\libs\glm\glm;C:\Dev\Glass\vendor\glew\include;C:\Dev\Glass\vendor\glfw\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Owner\Desktop\Octagram\libs\OpenAL 1.1 SDK\libs\Win64;C:\Dev\Glass\vendor\glew\lib\Release\x64;C:\Dev\Glass\vendor\glfw\lib-vc2019;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Owner\Desktop\Octagram\libs\OpenAL 1.1 SDK\include;C:\Users\Owner\Desktop\Octagram\libs\glm\glm;C:\Dev\Glass\vendor\glew\include;C:\Dev\Glass\vendor\glfw\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)bin\</OutDir>
     <IntDir>$(SolutionDir)bin-int\</IntDir>
-    <LibraryPath>C:\Users\Owner\Desktop\Octagram\libs\OpenAL 1.1 SDK\libs\Win64;C:\VulkanSDK\1.1.121.2\Lib;C:\Dev\Glass\vendor\glew\lib\Release\x64;C:\Dev\Glass\vendor\glfw\lib-vc2019;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\Users\Owner\Desktop\Octagram\libs\OpenAL 1.1 SDK\include;C:\VulkanSDK\1.1.121.2\Include;C:\Users\Owner\Desktop\Octagram\libs\glm\glm;C:\Dev\Glass\vendor\glew\include;C:\Dev\Glass\vendor\glfw\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Owner\Desktop\Octagram\libs\OpenAL 1.1 SDK\libs\Win64;C:\Dev\Glass\vendor\glew\lib\Release\x64;C:\Dev\Glass\vendor\glfw\lib-vc2019;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Owner\Desktop\Octagram\libs\OpenAL 1.1 SDK\include;C:\Users\Owner\Desktop\Octagram\libs\glm\glm;C:\Dev\Glass\vendor\glew\include;C:\Dev\Glass\vendor\glfw\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -104,7 +104,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>OpenAL32.lib;opengl32.lib;glu32.lib;glfw3.lib;glew32.lib;vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OpenAL32.lib;opengl32.lib;glu32.lib;glfw3.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -139,11 +139,15 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>OpenAL32.lib;opengl32.lib;glu32.lib;glfw3.lib;glew32.lib;vulkan-1.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OpenAL32.lib;opengl32.lib;glu32.lib;glfw3.lib;glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Glass\Profiler.h" />
+    <ClInclude Include="src\Glass\Shader.h" />
+    <ClInclude Include="src\Glass\DiffuseShader.h" />
+    <ClInclude Include="src\Glass\Buffer.h" />
     <ClInclude Include="src\Glass\BatchRenderer.h" />
     <ClInclude Include="src\Glass\AudioBuffer.h" />
     <ClInclude Include="src\Glass\FixedTimestep.h" />
@@ -174,10 +178,12 @@
     <ClInclude Include="src\Glass\VertexArray.h" />
     <ClInclude Include="src\Glass\VertexBuffer.h" />
     <ClInclude Include="src\Glass\Transform.h" />
-    <ClInclude Include="src\Glass\VulkanContext.h" />
     <ClInclude Include="src\Glass\World.h" />
+    <ClInclude Include="src\Glass\Text.h" />
+    <ClInclude Include="src\Glass\TextShader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Glass\DiffuseShader.cpp" />
     <ClCompile Include="src\Glass\BatchRenderer.cpp" />
     <ClCompile Include="src\Glass\AudioBuffer.cpp" />
     <ClCompile Include="src\Glass\FixedTimestep.cpp" />
@@ -199,8 +205,9 @@
     <ClCompile Include="src\Glass\Timestep.cpp" />
     <ClCompile Include="src\Glass\VertexArray.cpp" />
     <ClCompile Include="src\Glass\VertexBuffer.cpp" />
-    <ClCompile Include="src\Glass\VulkanContext.cpp" />
     <ClCompile Include="src\Glass\World.cpp" />
+    <ClCompile Include="src\Glass\Text.cpp" />
+    <ClCompile Include="src\Glass\TextShader.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

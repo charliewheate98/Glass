@@ -12,21 +12,30 @@ namespace Glass
 	class GLASS_API Mesh : public Object
 	{
 	private:
+		// This meshes index on the atlas
+		int m_TextureIndex;
+
+		// Buffers
 		VertexArray* m_VertexArray;
 		VertexBuffer* m_VertexBuffer;
 		IndexBuffer* m_IndexBuffer;
 
-		GLsizei m_VertexCount = { 0 };
+		// Amount of vertices on this mesh
+		GLsizei m_VertexCount = 0;
 	protected:
-
+		// This Meshes Texture
 		SharedScope<Texture2D> m_Texture;
 	public:
+		// Default Constructer
 		Mesh() = default;
+
+		// Constructer
 		Mesh(glm::vec3 position, int texture_index = 0);
+
+		// Destructer
 		~Mesh();
 
-		int m_TextureIndex;
-
+		// set the texture index of this mesh
 		void SetTextureIndex(int val) { m_TextureIndex = val; }
 
 		SharedScope<Texture2D>& GetTexture() { return m_Texture; }

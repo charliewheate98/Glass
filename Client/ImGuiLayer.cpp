@@ -57,29 +57,6 @@ void ImGuiLayer::CreateFrame()
 	ImGui::Separator();
 	ImGui::End();
 
-	// Object Inspector Window
-	ImGui::Begin("Object Inspector");
-
-	ImGui::Text("Translation");
-	ImGui::Separator();
-	ImGui::SliderFloat("Position X", &Glass::World::GetObjectList()[0]->GetPosition().x, -1920.f, 1920.f);
-	ImGui::SliderFloat("Position Y", &Glass::World::GetObjectList()[0]->GetPosition().y, -1080.f, 1080.f);
-	ImGui::Separator();
-
-	ImGui::Text("Rotation");
-	ImGui::Separator();
-	ImGui::SliderFloat("Angle", &Glass::World::GetObjectList()[0]->GetAngle(), 0.f, 180.f);
-	ImGui::Separator();
-
-	ImGui::Text("Scale");
-	ImGui::Separator();
-	ImGui::SliderFloat("Scale X", &Glass::World::GetObjectList()[0]->GetScale().x, 0.f, 2048.f);
-	ImGui::SliderFloat("Scale Y", &Glass::World::GetObjectList()[0]->GetScale().y, 0.f, 2048.f);
-	ImGui::Separator();
-
-	ImGui::End();
-	//
-
 	// World Inspector Window
 	ImGui::Begin("Home Inspector");
 	ImGui::Text("Background Settings");

@@ -22,7 +22,7 @@ namespace Glass
 			glClear(GL_COLOR_BUFFER_BIT);
 		}
 
-		static void DrawArrays(VertexArray& vertexArray, const GLsizei indexCount, GLsizei numInstances = 1)
+		static void DrawArraysInst(VertexArray& vertexArray, const GLsizei indexCount, GLsizei numInstances = 1)
 		{
 			if (indexCount >= 6)
 			{
@@ -43,7 +43,7 @@ namespace Glass
 				LOG_ERROR("[ARRAY DRAW CALL] Not Enough Indices to Draw");
 		}
 
-		static void DrawIndexed(VertexArray& vertexArray, const GLsizei indexCount, GLsizei numInstances = 1)
+		static void DrawIndexedInst(VertexArray& vertexArray, const GLsizei indexCount, GLsizei numInstances = 1)
 		{
 			if (indexCount >= 6)
 			{
@@ -64,12 +64,22 @@ namespace Glass
 				LOG_ERROR("[INDEXED DRAW CALL] Not Enough Indices to Draw");
 		}
 
+		static void DrawIndexed(const GLsizei& count) 
+		{
+			glDrawElements(GL_TRIANGLES, count, GL_UNSIGNED_INT, NULL);
+		}
+
+		static void DrawArrays(const GLsizei& count)
+		{
+			glDrawArrays(GL_TRIANGLES, 0, count);
+		}
+
 	private:
 	};
 
 	class GLASS_API Renderer
 	{
-	private:
+	protected:
 		struct SceneData
 		{
 			glm::mat4 ViewProjectionMatrix;
@@ -79,7 +89,7 @@ namespace Glass
 			GLuint loc_Diffuse;
 		};
 		SceneData m_SceneData;
-
+	private:
 		std::shared_ptr<Glass::OpenGLShader> m_Shader;
 	public:
 		virtual void Init(std::shared_ptr<Glass::OpenGLShader>& shader);

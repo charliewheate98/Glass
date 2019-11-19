@@ -6,6 +6,7 @@ struct Vertex
 {
 	glm::vec3 _v;
 	glm::vec2 _uv;
+	float     _tid;
 
 	Vertex() = default;
 	Vertex(glm::vec3 v, glm::vec2 uv)

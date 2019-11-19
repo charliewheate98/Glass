@@ -41,7 +41,7 @@ EditorApplication::EditorApplication(const char* title)
 	GLContext = std::make_unique<Glass::OpenGLContext>();
 
 	// Editor User Interface
-	//m_GuiLayer = std::make_shared<ImGuiLayer>(window, DARK);
+	m_GuiLayer = std::make_shared<ImGuiLayer>(window, DARK);
 
 	// Layers
 	Glass::LayerManager::PushLayer(std::make_unique<SceneLayer>());
@@ -65,15 +65,13 @@ void EditorApplication::Render()
 		layer->Render();
 
 	// Draw the Editor User Interface
-	//SMART_CAST(ImGuiLayer, m_GuiLayer)->Render();
+	SMART_CAST(ImGuiLayer, m_GuiLayer)->Render();
 }
 
 std::vector<std::string> menu_items;
 
 void EditorApplication::MainLoop()
 {
-	float previousTime = (float)glfwGetTime();
-
 	GLContext->PrintDeviceInfo();
 
 	Glass::Timestep timeStep(12.f);
@@ -82,7 +80,7 @@ void EditorApplication::MainLoop()
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		//SMART_CAST(ImGuiLayer, m_GuiLayer)->CreateFrame();
+		SMART_CAST(ImGuiLayer, m_GuiLayer)->CreateFrame();
 
 		timeStep.CalcLastElapsed();
 		while (timeStep.timeElapsed())

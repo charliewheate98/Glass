@@ -26,7 +26,9 @@ namespace Glass
 	class GLASS_API Texture2D : public BaseTexture
 	{
 	public:
-		static SharedScope<Texture2D> Create(const std::string& file);
+		static SharedScope<Texture2D> Create(const std::string& file, int num_rows);
+	private:
+		static GLuint loc_NumRows;
 	};
 
 	class GLASS_API TextureLibrary
@@ -37,11 +39,13 @@ namespace Glass
 			m_Textures.reserve(library_size);
 		}
 
-		static void Add(const std::string &name, SharedScope<Texture2D> texture)
+		static void Add(const std::string& name, SharedScope<Texture2D> texture)
 		{
 			texture->SetName(name);
 			m_Textures.insert({ name, texture });
 		}
+
+		static std::unordered_map<std::string, SharedScope<Texture2D>>& GetTextureList() { return m_Textures; }
 
 		static bool Exists(const std::string& name)
 		{
