@@ -22,15 +22,7 @@ namespace Glass
 		glBindBuffer(GL_ARRAY_BUFFER, m_Buffer);
 	}
 
-	void VertexBuffer::UnbindBuffer()
-	{
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-	}
-
 	VertexBuffer::~VertexBuffer()
-	{
-		m_BufferSize = NULL;
-		glDeleteBuffers(1, &m_Buffer);
-	}
+	{}
 }
 

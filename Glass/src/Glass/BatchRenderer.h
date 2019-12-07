@@ -96,7 +96,7 @@ namespace Glass
 		/*
 			Render all the data from the buffer
 		*/
-		void Render(OrthographicCamera& camera);
+		void Render(OrthographicCamera & camera);
 
 		/*
 			Get the list of glyphs/sprites in the batch.

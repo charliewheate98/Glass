@@ -23,7 +23,7 @@ namespace Glass
 
 		GLuint& GetProgram() { return program; }
 
-		const std::string& GetShaderName() { return shader_name; }
+		const std::string & GetShaderName() { return shader_name; }
 		void SetShaderName(const std::string& name) { shader_name = name; }
 
 		GLuint LoadUniform(const std::string& name);

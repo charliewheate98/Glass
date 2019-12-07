@@ -11,9 +11,10 @@ c:\dev\glass\client\x64\debug\imgui_demo.obj
 c:\dev\glass\client\x64\debug\imguilayer.obj
 c:\dev\glass\client\x64\debug\imgui.obj
 c:\dev\glass\client\x64\debug\editorapplication.obj
-c:\dev\glass\x64\debug\client.exe
 c:\dev\glass\x64\debug\client.ilk
+c:\dev\glass\x64\debug\client.exe
 c:\dev\glass\x64\debug\client.pdb
+c:\dev\glass\client\x64\debug\scenelayer.new.obj.enc
 c:\dev\glass\client\x64\debug\client.tlog\cl.command.1.tlog
 c:\dev\glass\client\x64\debug\client.tlog\cl.read.1.tlog
 c:\dev\glass\client\x64\debug\client.tlog\cl.write.1.tlog

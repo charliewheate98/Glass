@@ -3,12 +3,41 @@
 #include "Glass/Input.h"
 #include "Glass/BatchRenderer.h"
 #include "Glass/DiffuseShader.h"
-#include "Glass/Text.h"
 
 Glass::BatchRenderer m_BatchRenderer;
+std::shared_ptr<Glass::OpenGLShader> m_QuadShader;
+GLuint loc_fboTexture;
 
-Glass::Text* text;
-
+// renderQuad() renders a 1x1 XY quad in NDC
+// -----------------------------------------
+unsigned int quadVAO = 0;
+unsigned int quadVBO;
+void renderQuad()
+{
+	if (quadVAO == 0)
+	{
+		float quadVertices[] = {
+			// positions        // texture Coords
+			-1.0f,  1.0f, 0.0f, 0.0f, 1.0f,
+			-1.0f, -1.0f, 0.0f, 0.0f, 0.0f,
+			 1.0f,  1.0f, 0.0f, 1.0f, 1.0f,
+			 1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
+		};
+		// setup plane VAO
+		glGenVertexArrays(1, &quadVAO);
+		glGenBuffers(1, &quadVBO);
+		glBindVertexArray(quadVAO);
+		glBindBuffer(GL_ARRAY_BUFFER, quadVBO);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(quadVertices), &quadVertices, GL_STATIC_DRAW);
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+		glEnableVertexAttribArray(1);
+		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+	}
+	glBindVertexArray(quadVAO);
+	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+	glBindVertexArray(0);
+}
 SceneLayer::SceneLayer() :
 	Layer("gls_SceneLayer", 0)
 {
@@ -18,21 +47,19 @@ SceneLayer::SceneLayer() :
 
 	// shaders
 	std::shared_ptr<Glass::Shader> diffuseShader = std::make_shared<Glass::DiffuseShader>();
-	m_TextShader = std::make_shared<Glass::TextShader>(); m_TextShader->LoadUniforms();
-	//
+	m_QuadShader = std::make_shared<Glass::OpenGLShader>("Content/Shaders/Quad.vs", "Content/Shaders/Quad.fs");
 
-	// textures 
-	Glass::TextureLibrary::Add("BlueTile", Glass::Texture2D::Create("Content/Textures/Default.png", 1));
-
-
-	text = new Glass::Text("Hello World", glm::vec2(1.f, 1.f));
-	text->Process();
+	// fbos
+	fbo = new Glass::FrameBufferObject({
+			Glass::FrameBufferAttachment("Scene Colour Attachment", GL_COLOR_ATTACHMENT0, 1920, 1080, true)
+		});
 
 	// renderer
 	m_BatchRenderer.Init(diffuseShader);
 	m_BatchRenderer.Prepare(); 
 
-	for (int i = 0; i < 10; i++) {
+	for (unsigned i = 0; i < 1000; ++i)
+	{
 		m_BatchRenderer.SubmitData(glm::vec2(0.0f + i * 0.6f, 0.0f), glm::vec2(0.5f), glm::vec2(0.f), glm::vec2(1.f), glm::vec3(1.0f, 0.0f, 0.0f), 0);
 	}
 	
@@ -51,15 +78,15 @@ void SceneLayer::Update(float DeltaTime)
 
 void SceneLayer::Render()
 {
-	//Glass::TextureLibrary::GetByName("BlueTile")->Bind(0);
-	//m_BatchRenderer.Render(*m_OrthographicCamera);
+	fbo->BindBuffer();
+	m_BatchRenderer.Render(*m_OrthographicCamera);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-	m_TextShader->UseShader();
-
-	glm::mat4 m = glm::translate(glm::mat4(1.f), glm::vec3(0.f, 0.f, 0.f)) * glm::scale(glm::mat4(1.f), glm::vec3(256.f, 256.f, 0.f));
-
-	m_TextShader->GetCoreShader()->SetMatrix4(m_TextShader->GetCoreShader()->LoadUniform("m_ViewProjection"), m_OrthographicCamera->GetViewProjectionMatrix());
-	m_TextShader->GetCoreShader()->SetMatrix4(m_TextShader->GetCoreShader()->LoadUniform("m_Transform"), m);
-
-	text->Render();
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
+	m_QuadShader->Bind();
+	glUniform1i(m_QuadShader->LoadUniform("fboTexture"), 0);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, fbo->GetAttachments()[0].GetTexture());
+	renderQuad();
 }

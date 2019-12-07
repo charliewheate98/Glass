@@ -27,9 +27,4 @@ namespace Glass
 	{
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_Buffer);
 	}
-
-	void IndexBuffer::UnbindBuffer()
-	{
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-	}
 }

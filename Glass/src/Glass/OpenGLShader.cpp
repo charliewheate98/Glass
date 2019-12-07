@@ -7,6 +7,7 @@ namespace Glass
 	{
 		std::string vertexCode;
 		std::string fragmentCode;
+
 		std::ifstream vShaderFile;
 		std::ifstream fShaderFile;
 
@@ -17,6 +18,7 @@ namespace Glass
 		{
 			vShaderFile.open(vs);
 			fShaderFile.open(fs);
+
 			std::stringstream vShaderStream, fShaderStream;
 			
 			vShaderStream << vShaderFile.rdbuf();
@@ -34,7 +36,7 @@ namespace Glass
 		}
 		const char* vShaderCode = vertexCode.c_str();
 		const char* fShaderCode = fragmentCode.c_str();
-		
+
 		unsigned int vertex, fragment;
 
 		vertex = glCreateShader(GL_VERTEX_SHADER);
@@ -46,7 +48,7 @@ namespace Glass
 		glShaderSource(fragment, 1, &fShaderCode, NULL);
 		glCompileShader(fragment);
 		CheckCompileErrors(fragment, "FRAGMENT");
-	
+
 		program = glCreateProgram();
 		glAttachShader(program, vertex);
 		glAttachShader(program, fragment);

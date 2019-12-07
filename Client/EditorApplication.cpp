@@ -40,9 +40,6 @@ EditorApplication::EditorApplication(const char* title)
 	// the opengl context
 	GLContext = std::make_unique<Glass::OpenGLContext>();
 
-	// Editor User Interface
-	m_GuiLayer = std::make_shared<ImGuiLayer>(window, DARK);
-
 	// Layers
 	Glass::LayerManager::PushLayer(std::make_unique<SceneLayer>());
 	Glass::LayerManager::SortLayers();
@@ -63,9 +60,6 @@ void EditorApplication::Render()
 {
 	for (std::shared_ptr<Glass::Layer> layer : Glass::LayerManager::GetLayers())
 		layer->Render();
-
-	// Draw the Editor User Interface
-	SMART_CAST(ImGuiLayer, m_GuiLayer)->Render();
 }
 
 std::vector<std::string> menu_items;
@@ -79,8 +73,7 @@ void EditorApplication::MainLoop()
 	while (!glfwWindowShouldClose(window))
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
-
-		SMART_CAST(ImGuiLayer, m_GuiLayer)->CreateFrame();
+		glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
 
 		timeStep.CalcLastElapsed();
 		while (timeStep.timeElapsed())

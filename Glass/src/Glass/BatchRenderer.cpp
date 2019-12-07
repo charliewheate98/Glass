@@ -65,7 +65,7 @@ namespace Glass
 			{
 				if (m_TextureSlots[i] == id)
 				{
-					LOG_WARN("[Batch] Texture Slot Already Exists!");
+					//LOG_WARN("[Batch] Texture Slot Already Exists!");
 					ts = (float)i;
 					found = true;
 					break;
@@ -150,15 +150,12 @@ namespace Glass
 		m_IndexBuffer->BindBuffer();
 		m_IndexBuffer->UpdateBuffer(STATIC_CAST(GLsizei, m_Indices.size() * sizeof(GLuint)), NULL, GL_DYNAMIC_DRAW);
 		glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, 0, m_Indices.size() * sizeof(GLuint), &m_Indices[0]);
-
-		m_VertexBuffer->UnbindBuffer();
-		m_IndexBuffer->UnbindBuffer();
 	}
 
 	/*
 		Render all the data from the buffer
 	*/
-	void BatchRenderer::Render(OrthographicCamera& camera)
+	void BatchRenderer::Render(OrthographicCamera & camera)
 	{
 		// set the vertex projection matrix of the camera to my local matrix variable
 		m_SceneData.ViewProjectionMatrix = camera.GetViewProjectionMatrix();
@@ -174,12 +171,6 @@ namespace Glass
 		// global uniforms
 		m_Shader->GetCoreShader()->SetMatrix4(m_SceneData.loc_view, m_SceneData.ViewProjectionMatrix); // set the view projection matrix
 		m_Shader->GetCoreShader()->SetMatrix4(m_SceneData.loc_Transform, m); // set the objects transforms
-
-		// set the uniforms from the shader
-		for (size_t i = 0; i < m_TextureSlots.size(); ++i)
-		{
-			std::dynamic_pointer_cast<DiffuseShader>(m_Shader)->SetSampler2D(STATIC_CAST(int, i), m_TextureSlots[i]);
-		}
 
 		// Bind the vertex array ready for drawing
 		m_VertexArray->BindVertexArray();

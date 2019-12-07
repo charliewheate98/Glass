@@ -11,7 +11,6 @@ namespace Glass
 		~IndexBuffer();
 
 		void UpdateBuffer(GLsizei buffer_size, void* buffer_data, GLenum usage);
-		void UnbindBuffer() override;
 		void BindBuffer() override;
 	};
 }

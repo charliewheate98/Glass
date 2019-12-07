@@ -163,21 +163,21 @@
       <Filter>Header Files\Engine\Utils</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\Buffer.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Glass\DiffuseShader.h">
-      <Filter>Header Files\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Glass\Profiler.h">
-      <Filter>Header Files\Engine</Filter>
+      <Filter>Header Files\Engine\Wrapper Classes</Filter>
     </ClInclude>
     <ClInclude Include="src\Glass\Shader.h">
-      <Filter>Header Files\Engine</Filter>
+      <Filter>Header Files\Engine\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\Glass\Text.h">
+    <ClInclude Include="src\Glass\DiffuseShader.h">
+      <Filter>Header Files\Engine\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glass\UniformBufferObject.h">
+      <Filter>Header Files\Engine\Wrapper Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Glass\FrameBufferAttachment.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Glass\TextShader.h">
+    <ClInclude Include="src\Glass\FrameBufferObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -248,13 +248,16 @@
     <ClCompile Include="src\Glass\FixedTimestep.cpp">
       <Filter>Source Files\Engine\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="src\Glass\DiffuseShader.cpp">
-      <Filter>Source Files\Engine</Filter>
+    <ClCompile Include="src\Glass\UniformBufferObject.cpp">
+      <Filter>Source Files\Engine\Wrapper Classes</Filter>
     </ClCompile>
-    <ClCompile Include="src\Glass\Text.cpp">
+    <ClCompile Include="src\Glass\DiffuseShader.cpp">
+      <Filter>Source Files\Engine\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Glass\FrameBufferAttachment.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Glass\TextShader.cpp">
+    <ClCompile Include="src\Glass\FrameBufferObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

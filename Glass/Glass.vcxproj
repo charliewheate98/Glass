@@ -144,7 +144,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Glass\Profiler.h" />
+    <ClInclude Include="src\Glass\FrameBufferObject.h" />
+    <ClInclude Include="src\Glass\FrameBufferAttachment.h" />
     <ClInclude Include="src\Glass\Shader.h" />
     <ClInclude Include="src\Glass\DiffuseShader.h" />
     <ClInclude Include="src\Glass\Buffer.h" />
@@ -179,10 +180,11 @@
     <ClInclude Include="src\Glass\VertexBuffer.h" />
     <ClInclude Include="src\Glass\Transform.h" />
     <ClInclude Include="src\Glass\World.h" />
-    <ClInclude Include="src\Glass\Text.h" />
-    <ClInclude Include="src\Glass\TextShader.h" />
+    <ClInclude Include="src\Glass\UniformBufferObject.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Glass\FrameBufferObject.cpp" />
+    <ClCompile Include="src\Glass\FrameBufferAttachment.cpp" />
     <ClCompile Include="src\Glass\DiffuseShader.cpp" />
     <ClCompile Include="src\Glass\BatchRenderer.cpp" />
     <ClCompile Include="src\Glass\AudioBuffer.cpp" />
@@ -206,8 +208,7 @@
     <ClCompile Include="src\Glass\VertexArray.cpp" />
     <ClCompile Include="src\Glass\VertexBuffer.cpp" />
     <ClCompile Include="src\Glass\World.cpp" />
-    <ClCompile Include="src\Glass\Text.cpp" />
-    <ClCompile Include="src\Glass\TextShader.cpp" />
+    <ClCompile Include="src\Glass\UniformBufferObject.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

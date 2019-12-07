@@ -10,17 +10,27 @@ namespace Glass
 	{
 	protected:
 		GLenum  m_BufferUsage;
-		GLuint  m_Buffer = { 0 };
-		GLsizei m_BufferSize = { 0 };
+		GLuint  m_Buffer;
+		GLsizei m_BufferSize;
 		void*   m_BufferData;
-	public:
-		Buffer() {}
-		~Buffer() {}
+	public: 
+		Buffer() :
+			m_BufferData(nullptr),
+			m_BufferUsage(NULL),
+			m_Buffer(NULL),
+			m_BufferSize(NULL)
+		{}
+		virtual ~Buffer() { 
+			if(m_BufferData)
+				delete m_BufferData; 
+			
+			glDeleteBuffers(1, &m_Buffer);
+		}
 
 		/*
 			Upload data to the buffer
 		*/
-		void UploadData(const GLenum buffer_type, void* buffer_data, GLint offset)
+		void UploadSubData(const GLenum buffer_type, void* buffer_data, GLint offset)
 		{
 			glBufferSubData(buffer_type, offset, m_BufferSize, buffer_data);
 		}
@@ -28,15 +38,14 @@ namespace Glass
 		/*
 			Pure Virtuals
 		*/
-		virtual void UnbindBuffer() = 0;
 		virtual void BindBuffer()   = 0;
 
 		/*
 			Getters
 		*/
-		inline GLuint&  GetBuffer()     { return m_Buffer;     }
-		inline GLsizei& GetBufferSize() { return m_BufferSize; }
-		inline void*    GetBufferData() { return m_BufferData; }
+		inline GLuint &  GetBuffer()			   { return m_Buffer;     }
+		inline constexpr GLsizei & GetBufferSize() { return m_BufferSize; }
+		inline void *    GetBufferData()           { return m_BufferData; }
 	};
 }
 

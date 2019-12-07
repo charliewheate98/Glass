@@ -13,8 +13,6 @@ uniform sampler2D m_Diffuse[2];
 
 void main()
 {
-	float intensity = 1.0f / length(inData.pos - vec3(1.0f, 0.4f, 0.f));
+	FragColor = vec4(1.0, 0.0, 0.0, 1.0);
 
-	int tid = int(inData.tid + 0.5);
-	FragColor = texture(m_Diffuse[tid], inData.TexCoords) * intensity;		
 }
